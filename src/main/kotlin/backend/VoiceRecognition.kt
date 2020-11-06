@@ -20,7 +20,7 @@ object VoiceRecognition {
         var success = false
 
         while(!success) {
-            if(VoiceAssistant.driver.pageSource.toLowerCase().contains("hey zeus")) {
+            if(VoiceAssistant.keywords.contains(VoiceAssistant.driver.pageSource.toLowerCase())) {
 
                 println("[VoiceRecognition] Recognized keyword, stopping general recognition")
                 microphoneButton.click() // Stopping recognition

@@ -9,6 +9,8 @@ object VoiceAssistant {
     @JvmStatic
     lateinit var driver: ChromeDriver
 
+    val keywords = listOf("hey ava", "ok ava")
+
     @JvmStatic
     fun main(args: Array<String>) {
 
