@@ -24,15 +24,28 @@ object VoiceRecognition {
                 microphoneButton.click() // Restart recognition
                 SoundManager.playSound("start")
 
-                Thread.sleep(5000)
-                microphoneButton.click() // Stop recognition
-                SoundManager.playSound("end")
+                while(true) {
+                    val firstDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
+                    val firstElement = firstDoc.getElementsByClass("D5aOJc").first()
 
-                val doc = Jsoup.parse(VoiceAssistant.driver.pageSource)
-                val element = doc.getElementsByClass("D5aOJc").first()
+                     Thread.sleep(2000)
 
-                handleRecognition(element.text())
+                    val secondDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
+                    val secondElement = secondDoc.getElementsByClass("D5aOJc").first()
 
+                    if(firstElement == secondElement) {
+
+                        microphoneButton.click() // Stop recognition
+                        SoundManager.playSound("end")
+
+                        val doc = Jsoup.parse(VoiceAssistant.driver.pageSource)
+                        val element = doc.getElementsByClass("D5aOJc").first()
+
+                        handleRecognition(element.text())
+
+                        return
+                    }
+                }
             }
         }
 
