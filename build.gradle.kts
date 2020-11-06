@@ -13,4 +13,6 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     testCompile("junit", "junit", "4.12")
+
+    implementation("org.jsoup:jsoup:1.8.3")
 }
