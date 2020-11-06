@@ -22,8 +22,11 @@ object VoiceRecognition {
                 clearButton.click() // Clearing textarea
 
                 microphoneButton.click() // Restart recognition
+                SoundManager.playSound("start")
 
                 Thread.sleep(5000)
+                microphoneButton.click() // Stop recognition
+                SoundManager.playSound("end")
 
                 val doc = Jsoup.parse(VoiceAssistant.driver.pageSource)
                 val element = doc.getElementsByClass("D5aOJc").first()
@@ -37,7 +40,7 @@ object VoiceRecognition {
 
     private fun handleRecognition(textArea: String) {
 
-        println("Du hast $textArea gesagt!")
+        println("Du hast '$textArea' gesagt!")
 
     }
 
