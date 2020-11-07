@@ -101,8 +101,13 @@ object VoiceRecognition {
         if(greetings.contains(textArea.toLowerCase())) {
             VoiceSynthesizer.speakText("Hallo, ${offers.random()}")
             startActiveRecognition()
+        }else if(textArea.toLowerCase() == "tschüss") {
+            VoiceSynthesizer.speakText("Tschüss, ich warte solange auf sie")
+            startRecognition()
         }else if(textArea.toLowerCase() == "stopp") {
             startRecognition()
+        }else if(textArea.toLowerCase() == "shutdown") {
+            VoiceSynthesizer.speakText("Beginne shutdown... [stop]")
         }
 
     }
