@@ -2,7 +2,6 @@ package backend
 
 import org.jsoup.Jsoup
 import org.openqa.selenium.By
-import java.awt.TextArea
 
 object VoiceRecognition {
 
@@ -36,12 +35,12 @@ object VoiceRecognition {
                     val firstDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
                     val firstElement = firstDoc.getElementsByClass("D5aOJc").first()
 
-                     Thread.sleep(2000) // Checking if user stopped speaking within 2 seconds
+                     Thread.sleep(1500) // Checking if user stopped speaking within 1.5 seconds
 
                     val secondDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
                     val secondElement = secondDoc.getElementsByClass("D5aOJc").first()
 
-                    if(firstElement == secondElement) {
+                    if(firstElement == secondElement && firstElement.text() != "") {
 
                         println("[VoiceRecognition] Recognized stopped speaking, stopping specific recognition and handling input")
                         microphoneButton.click() // Stop recognition
@@ -75,12 +74,12 @@ object VoiceRecognition {
             val firstDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
             val firstElement = firstDoc.getElementsByClass("D5aOJc").first()
 
-            Thread.sleep(2000) // Checking if user stopped speaking within 2 seconds
+            Thread.sleep(1500) // Checking if user stopped speaking within 1.5 seconds
 
             val secondDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
             val secondElement = secondDoc.getElementsByClass("D5aOJc").first()
 
-            if(firstElement == secondElement) {
+            if(firstElement == secondElement && firstElement.text() != "") {
 
                 println("[VoiceRecognition] Recognized stopped speaking, stopping specific recognition and handling input")
                 microphoneButton.click() // Stop recognition
