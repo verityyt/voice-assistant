@@ -104,6 +104,9 @@ object VoiceRecognition {
         if(greetings.contains(textArea.toLowerCase())) {
             VoiceSynthesizer.speakText("Hallo, ${offers.random()}")
             startActiveRecognition()
+        }else if(textArea.toLowerCase() == "ich bin wieder da") {
+            VoiceSynthesizer.speakText("Willkommen zuhause, sir. ${offers.random()}")
+            startRecognition()
         }else if(textArea.toLowerCase() == "tschüss") {
             VoiceSynthesizer.speakText("Bis später, ich warte solange auf sie")
             startRecognition()
