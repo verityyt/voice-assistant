@@ -7,17 +7,15 @@ object VoiceSynthesizer {
     fun speakText(text: String) {
 
         val stop = text.endsWith("[stop]")
-        val enterText = if(stop) {
-            text.replace("[stop]","")
-        }else {
-            text
-        }
 
-        VoiceAssistant.driver.get("https://translate.google.com/?hl=de&ui=tob&sl=de&tl=en&text=${enterText.replace(" ","%20")}%0A&op=translate")
+        VoiceAssistant.driver.get("https://ttsmp3.com/text-to-speech/German/")
 
-        Thread.sleep(2000)
+        Thread.sleep(1500)
 
-        val playSound = VoiceAssistant.driver.findElement(By.className("SSgGrd"))
+        val textarea = VoiceAssistant.driver.findElement(By.id("voicetext"))
+        textarea.sendKeys(text)
+
+        val playSound = VoiceAssistant.driver.findElement(By.id("vorlesenbutton"))
         playSound.click()
 
         var playTime = 0L
