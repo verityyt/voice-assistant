@@ -9,7 +9,7 @@ object VoiceAssistant {
     @JvmStatic
     lateinit var driver: ChromeDriver
 
-    val keyword = "hey friday"
+    val keyword = "hey jarvis"
 
     @JvmStatic
     fun main(args: Array<String>) {
