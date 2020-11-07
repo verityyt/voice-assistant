@@ -11,6 +11,9 @@ object VoiceRecognition {
     fun startRecognition() {
 
         VoiceAssistant.driver.get("https://translate.google.com/?hl=de&ui=tob&sl=de&tl=en&op=translate")
+
+        Thread.sleep(1000)
+
         val microphoneButton = VoiceAssistant.driver.findElement(By.className("MtoyUd"))
 
         println("[VoiceRecognition] Starting general recognition for keyword")
@@ -102,12 +105,12 @@ object VoiceRecognition {
             VoiceSynthesizer.speakText("Hallo, ${offers.random()}")
             startActiveRecognition()
         }else if(textArea.toLowerCase() == "tschüss") {
-            VoiceSynthesizer.speakText("Tschüss, ich warte solange auf sie")
+            VoiceSynthesizer.speakText("Bis später, ich warte solange auf sie")
             startRecognition()
         }else if(textArea.toLowerCase() == "stopp") {
             startRecognition()
         }else if(textArea.toLowerCase() == "shutdown") {
-            VoiceSynthesizer.speakText("Beginne shutdown... [stop]")
+            VoiceSynthesizer.speakText("Beginne shutdown[stop]")
         }
 
     }
