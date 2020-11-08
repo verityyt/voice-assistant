@@ -34,6 +34,8 @@ object VoiceRecognition {
                 clearButton.click() // Clearing textarea
 
                 println("[VoiceRecognition] Starting specific recognition")
+                VoiceSynthesizer.speakText("Ja, sir?")
+                VoiceAssistant.switchTab(0)
                 microphoneButton.click() // Restart recognition
                 SoundManager.playSound("start")
 
@@ -112,16 +114,27 @@ object VoiceRecognition {
         if(greetings.contains(textArea.toLowerCase())) {
             VoiceSynthesizer.speakText("Hallo, ${offers.random()}")
             startActiveRecognition()
-        }else if(textArea.toLowerCase() == "ich bin wieder da") {
-            VoiceSynthesizer.speakText("Willkommen zuhause, sir. ${offers.random()}")
-            startRecognition()
-        }else if(textArea.toLowerCase() == "tschüss") {
-            VoiceSynthesizer.speakText("Bis später, ich warte solange auf sie")
-            startRecognition()
-        }else if(textArea.toLowerCase() == "stopp") {
-            startRecognition()
-        }else if(textArea.toLowerCase() == "shutdown") {
-            VoiceSynthesizer.speakText("Beginne shutdown[stop]")
+        }
+
+        when(textArea.toLowerCase()) {
+            "stell dich vor" -> {
+                VoiceSynthesizer.speakText("Hallo, ich bin Jarvis der neue virtuelle Assistent.")
+                startRecognition()
+            }
+            "ich bin wieder da" -> {
+                VoiceSynthesizer.speakText("Willkommen zuhause sir. ${offers.random()}")
+                startActiveRecognition()
+            }
+            "tschüss" -> {
+                VoiceSynthesizer.speakText("Bis später. Ich warte solange auf sie")
+                startRecognition()
+            }
+            "stopp" -> {
+                startRecognition()
+            }
+            "shutdown" -> {
+                VoiceSynthesizer.speakText("Bis bald. [stop]")
+            }
         }
 
     }

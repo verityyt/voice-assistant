@@ -25,7 +25,7 @@ object VoiceSynthesizer {
         var playTime = 0L
 
         for(char in text) {
-            playTime += 100
+            playTime += 90
         }
 
         Thread.sleep(playTime)

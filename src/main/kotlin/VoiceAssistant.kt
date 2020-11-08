@@ -1,4 +1,5 @@
 import backend.VoiceRecognition
+import backend.VoiceSynthesizer
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.chrome.ChromeDriver
@@ -39,6 +40,8 @@ object VoiceAssistant {
         tabs = ArrayList(driver.windowHandles)
         driver.switchTo().window(tabs[1])
         driver.get("https://ttsmp3.com/text-to-speech/German/")
+
+        VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
 
         VoiceRecognition.startRecognition()
 
