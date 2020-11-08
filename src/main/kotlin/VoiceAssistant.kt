@@ -1,6 +1,8 @@
 import backend.VoiceRecognition
 import backend.VoiceSynthesizer
 import backend.commands.*
+import backend.commands.weather.TemperatureCommand
+import backend.commands.weather.WeatherCommand
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import java.util.HashMap
@@ -17,7 +19,7 @@ object VoiceAssistant {
 
     val keyword = "hey jarvis"
 
-    val commands = listOf(IntroduceCommand(), GreetingCommand(), ImBackCommand(), ByeCommand(), StopCommand(), ShutdownCommand(), NoCommand())
+    val commands = listOf(IntroduceCommand(), GreetingCommand(), ImBackCommand(), ByeCommand(), StopCommand(), ShutdownCommand(), NoCommand(), WeatherCommand(), TemperatureCommand())
 
     @JvmStatic
     fun main(args: Array<String>) {
