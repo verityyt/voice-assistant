@@ -1,5 +1,7 @@
 import backend.VoiceRecognition
 import backend.VoiceSynthesizer
+import backend.commands.BegrueßungenCommand
+import backend.commands.VorstellenCommand
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.chrome.ChromeDriver
@@ -19,6 +21,8 @@ object VoiceAssistant {
     private lateinit var tabs: ArrayList<String>
 
     val keyword = "hey jarvis"
+
+    val commands = listOf(VorstellenCommand(), BegrueßungenCommand())
 
     @JvmStatic
     fun main(args: Array<String>) {

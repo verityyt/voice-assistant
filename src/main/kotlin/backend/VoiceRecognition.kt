@@ -5,7 +5,6 @@ import org.openqa.selenium.By
 
 object VoiceRecognition {
 
-    val greetings = listOf("hallo", "guten morgen", "guten tag", "guten abend", "servus", "Hi")
     val offers = listOf("Wie kann ich ihnen helfen?", "Kann ich irgendetwas für sie tun?", "Kann ich ihnen irgendwie behilflich sein?")
 
     fun startRecognition() {
@@ -67,7 +66,7 @@ object VoiceRecognition {
 
     }
 
-    private fun startActiveRecognition() {
+    fun startActiveRecognition() {
 
         VoiceAssistant.switchTab(0)
         try {
@@ -111,16 +110,13 @@ object VoiceRecognition {
 
     private fun handleRecognition(textArea: String) {
 
-        if(greetings.contains(textArea.toLowerCase())) {
-            VoiceSynthesizer.speakText("Hallo, ${offers.random()}")
-            startActiveRecognition()
+        for(command in VoiceAssistant.commands) {
+            if(command.keywords.contains(textArea.toLowerCase())) {
+                command.perform(textArea.toLowerCase())
+            }
         }
 
         when(textArea.toLowerCase()) {
-            "stell dich vor" -> {
-                VoiceSynthesizer.speakText("Hallo, ich bin Jarvis der neue virtuelle Assistent.")
-                startRecognition()
-            }
             "ich bin wieder da" -> {
                 VoiceSynthesizer.speakText("Willkommen zuhause sir. ${offers.random()}")
                 startActiveRecognition()
