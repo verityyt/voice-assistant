@@ -4,14 +4,14 @@ import backend.VoiceCommand
 import backend.VoiceRecognition
 import backend.VoiceSynthesizer
 
-class BegrueßungenCommand : VoiceCommand() {
+class ImBackCommand : VoiceCommand() {
 
-    override val keywords: List<String> = listOf("hallo", "guten morgen", "guten tag", "guten abend", "servus", "Hi")
+    override val keywords: List<String> = listOf("ich bin wieder da", "ich bin wieder zurück", "ich bin wieder zuhause")
 
     val offers = listOf("wie kann ich ihnen helfen?", "kann ich irgendetwas für sie tun?", "kann ich ihnen irgendwie behilflich sein?")
 
     override fun perform(input: String) {
-        VoiceSynthesizer.speakText("Hallo, ${offers.random()}")
+        VoiceSynthesizer.speakText("Willkommen zuhause sir. ${offers.random()}")
         VoiceRecognition.startActiveRecognition()
     }
 

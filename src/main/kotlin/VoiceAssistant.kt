@@ -1,13 +1,8 @@
 import backend.VoiceRecognition
 import backend.VoiceSynthesizer
-import backend.commands.BegrueßungenCommand
-import backend.commands.VorstellenCommand
-import org.openqa.selenium.By
-import org.openqa.selenium.Keys
+import backend.commands.*
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
-import org.openqa.selenium.interactions.Actions
-import java.awt.Robot
 import java.util.HashMap
 import kotlin.system.exitProcess
 import java.util.ArrayList
@@ -22,7 +17,7 @@ object VoiceAssistant {
 
     val keyword = "hey jarvis"
 
-    val commands = listOf(VorstellenCommand(), BegrueßungenCommand())
+    val commands = listOf(IntroduceCommand(), GreetingCommand(), ImBackCommand(), ByeCommand(), StopCommand(), ShutdownCommand(), NoCommand())
 
     @JvmStatic
     fun main(args: Array<String>) {

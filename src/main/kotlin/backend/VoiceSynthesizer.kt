@@ -6,9 +6,9 @@ object VoiceSynthesizer {
 
     fun speakText(text: String) {
 
-        val stop = text.endsWith("[stop]")
-        val enterText = if(stop) {
-            text.replace("[stop]","")
+        val shutdown = text.endsWith("[shutdown]")
+        val enterText = if(shutdown) {
+            text.replace("[shutdown]","")
         }else {
             text
         }
@@ -30,7 +30,7 @@ object VoiceSynthesizer {
 
         Thread.sleep(playTime)
 
-        if(stop) {
+        if(shutdown) {
             VoiceAssistant.shutdown()
         }
 

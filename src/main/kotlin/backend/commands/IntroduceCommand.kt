@@ -4,7 +4,7 @@ import backend.VoiceCommand
 import backend.VoiceRecognition
 import backend.VoiceSynthesizer
 
-class VorstellenCommand : VoiceCommand() {
+class IntroduceCommand : VoiceCommand() {
 
     override val keywords: List<String> = listOf("stell dich vor", "stell dich bitte vor", "kannst du dich bitte vorstellen")
 

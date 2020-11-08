@@ -5,8 +5,6 @@ import org.openqa.selenium.By
 
 object VoiceRecognition {
 
-    val offers = listOf("Wie kann ich ihnen helfen?", "Kann ich irgendetwas für sie tun?", "Kann ich ihnen irgendwie behilflich sein?")
-
     fun startRecognition() {
 
         VoiceAssistant.switchTab(0)
@@ -113,23 +111,6 @@ object VoiceRecognition {
         for(command in VoiceAssistant.commands) {
             if(command.keywords.contains(textArea.toLowerCase())) {
                 command.perform(textArea.toLowerCase())
-            }
-        }
-
-        when(textArea.toLowerCase()) {
-            "ich bin wieder da" -> {
-                VoiceSynthesizer.speakText("Willkommen zuhause sir. ${offers.random()}")
-                startActiveRecognition()
-            }
-            "tschüss" -> {
-                VoiceSynthesizer.speakText("Bis später. Ich warte solange auf sie")
-                startRecognition()
-            }
-            "stopp" -> {
-                startRecognition()
-            }
-            "shutdown" -> {
-                VoiceSynthesizer.speakText("Bis bald. [stop]")
             }
         }
 
