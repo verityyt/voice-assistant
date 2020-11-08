@@ -10,7 +10,7 @@ import kotlin.system.exitProcess
 import java.util.ArrayList
 
 
-object VoiceAssistant {
+object Jarvis {
 
     @JvmStatic
     lateinit var driver: ChromeDriver

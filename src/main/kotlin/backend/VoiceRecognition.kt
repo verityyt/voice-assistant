@@ -7,14 +7,14 @@ object VoiceRecognition {
 
     fun startRecognition() {
 
-        VoiceAssistant.switchTab(0)
+        Jarvis.switchTab(0)
 
         try {
-            val clearButton = VoiceAssistant.driver.findElement(By.className("GA2I6e"))
+            val clearButton = Jarvis.driver.findElement(By.className("GA2I6e"))
             clearButton.click()
         }catch (e: Exception) { }
 
-        val microphoneButton = VoiceAssistant.driver.findElement(By.className("MtoyUd"))
+        val microphoneButton = Jarvis.driver.findElement(By.className("MtoyUd"))
 
         println("[VoiceRecognition] Starting general recognition for keyword")
         microphoneButton.click() // Starting recognition
@@ -22,27 +22,27 @@ object VoiceRecognition {
         var success = false
 
         while(!success) {
-            if(VoiceAssistant.driver.pageSource.toLowerCase().contains(VoiceAssistant.keyword)) {
+            if(Jarvis.driver.pageSource.toLowerCase().contains(Jarvis.keyword)) {
 
                 println("[VoiceRecognition] Recognized keyword, stopping general recognition")
                 microphoneButton.click() // Stopping recognition
 
-                val clearButton = VoiceAssistant.driver.findElement(By.className("GA2I6e"))
+                val clearButton = Jarvis.driver.findElement(By.className("GA2I6e"))
                 clearButton.click() // Clearing textarea
 
                 println("[VoiceRecognition] Starting specific recognition")
                 VoiceSynthesizer.speakText("Ja, sir?")
-                VoiceAssistant.switchTab(0)
+                Jarvis.switchTab(0)
                 microphoneButton.click() // Restart recognition
                 SoundManager.playSound("start")
 
                 while(!success) {
-                    val firstDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
+                    val firstDoc = Jsoup.parse(Jarvis.driver.pageSource)
                     val firstElement = firstDoc.getElementsByClass("D5aOJc").first()
 
                      Thread.sleep(1500) // Checking if user stopped speaking within 1.5 seconds
 
-                    val secondDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
+                    val secondDoc = Jsoup.parse(Jarvis.driver.pageSource)
                     val secondElement = secondDoc.getElementsByClass("D5aOJc").first()
 
                     if(firstElement == secondElement && firstElement.text() != "") {
@@ -51,7 +51,7 @@ object VoiceRecognition {
                         microphoneButton.click() // Stop recognition
                         SoundManager.playSound("end")
 
-                        val doc = Jsoup.parse(VoiceAssistant.driver.pageSource)
+                        val doc = Jsoup.parse(Jarvis.driver.pageSource)
                         val element = doc.getElementsByClass("D5aOJc").first()
 
                         handleRecognition(element.text())
@@ -66,13 +66,13 @@ object VoiceRecognition {
 
     fun startActiveRecognition() {
 
-        VoiceAssistant.switchTab(0)
+        Jarvis.switchTab(0)
         try {
-            val clearButton = VoiceAssistant.driver.findElement(By.className("GA2I6e"))
+            val clearButton = Jarvis.driver.findElement(By.className("GA2I6e"))
             clearButton.click()
         }catch (e: Exception) { }
 
-        val microphoneButton = VoiceAssistant.driver.findElement(By.className("MtoyUd"))
+        val microphoneButton = Jarvis.driver.findElement(By.className("MtoyUd"))
 
         println("[VoiceRecognition] Starting new active specific recognition")
         microphoneButton.click() // Starting recognition
@@ -81,12 +81,12 @@ object VoiceRecognition {
         var success = false
 
         while(!success) {
-            val firstDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
+            val firstDoc = Jsoup.parse(Jarvis.driver.pageSource)
             val firstElement = firstDoc.getElementsByClass("D5aOJc").first()
 
             Thread.sleep(1500) // Checking if user stopped speaking within 1.5 seconds
 
-            val secondDoc = Jsoup.parse(VoiceAssistant.driver.pageSource)
+            val secondDoc = Jsoup.parse(Jarvis.driver.pageSource)
             val secondElement = secondDoc.getElementsByClass("D5aOJc").first()
 
             if(firstElement == secondElement && firstElement.text() != "") {
@@ -95,7 +95,7 @@ object VoiceRecognition {
                 microphoneButton.click() // Stop recognition
                 SoundManager.playSound("end")
 
-                val doc = Jsoup.parse(VoiceAssistant.driver.pageSource)
+                val doc = Jsoup.parse(Jarvis.driver.pageSource)
                 val element = doc.getElementsByClass("D5aOJc").first()
 
                 handleRecognition(element.text())
@@ -108,7 +108,7 @@ object VoiceRecognition {
 
     private fun handleRecognition(textArea: String) {
 
-        for(command in VoiceAssistant.commands) {
+        for(command in Jarvis.commands) {
             if(command.keywords.contains(textArea.toLowerCase())) {
                 command.perform(textArea.toLowerCase())
             }
