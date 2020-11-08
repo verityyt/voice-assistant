@@ -13,11 +13,10 @@ object VoiceSynthesizer {
             text
         }
 
-        VoiceAssistant.driver.get("https://ttsmp3.com/text-to-speech/German/")
-
-        Thread.sleep(1500)
+        VoiceAssistant.switchTab(1)
 
         val textarea = VoiceAssistant.driver.findElement(By.id("voicetext"))
+        textarea.clear()
         textarea.sendKeys(enterText)
 
         val playSound = VoiceAssistant.driver.findElement(By.id("vorlesenbutton"))

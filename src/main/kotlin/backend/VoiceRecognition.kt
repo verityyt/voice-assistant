@@ -10,9 +10,12 @@ object VoiceRecognition {
 
     fun startRecognition() {
 
-        VoiceAssistant.driver.get("https://translate.google.com/?hl=de&ui=tob&sl=de&tl=en&op=translate")
+        VoiceAssistant.switchTab(0)
 
-        Thread.sleep(1000)
+        try {
+            val clearButton = VoiceAssistant.driver.findElement(By.className("GA2I6e"))
+            clearButton.click()
+        }catch (e: Exception) { }
 
         val microphoneButton = VoiceAssistant.driver.findElement(By.className("MtoyUd"))
 
@@ -64,7 +67,12 @@ object VoiceRecognition {
 
     private fun startActiveRecognition() {
 
-        VoiceAssistant.driver.get("https://translate.google.com/?hl=de&ui=tob&sl=de&tl=en&op=translate")
+        VoiceAssistant.switchTab(0)
+        try {
+            val clearButton = VoiceAssistant.driver.findElement(By.className("GA2I6e"))
+            clearButton.click()
+        }catch (e: Exception) { }
+
         val microphoneButton = VoiceAssistant.driver.findElement(By.className("MtoyUd"))
 
         println("[VoiceRecognition] Starting new active specific recognition")
