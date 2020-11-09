@@ -31,8 +31,12 @@ object VoiceRecognition {
                 clearButton.click() // Clearing textarea
 
                 println("[VoiceRecognition] Starting specific recognition")
-                VoiceSynthesizer.speakText("Ja, sir?")
-                Jarvis.switchTab(0)
+
+                if(listOf(true, false).random()) {
+                    VoiceSynthesizer.speakText("Ja, sir?")
+                    Jarvis.switchTab(0)
+                }
+
                 microphoneButton.click() // Restart recognition
                 SoundManager.playSound("start")
 
@@ -108,10 +112,18 @@ object VoiceRecognition {
 
     private fun handleRecognition(textArea: String) {
 
+        var found = false
+
         for(command in Jarvis.commands) {
             if(command.keywords.contains(textArea.toLowerCase())) {
                 command.perform(textArea.toLowerCase())
+                found = true
             }
+        }
+
+        if(!found) {
+            VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit '$textArea' meinen")
+            startRecognition()
         }
 
     }

@@ -19,7 +19,19 @@ object Jarvis {
 
     val keyword = "hey jarvis"
 
-    val commands = listOf(IntroduceCommand(), GreetingCommand(), ImBackCommand(), ByeCommand(), StopCommand(), ShutdownCommand(), NoCommand(), WeatherCommand(), TemperatureCommand())
+    val commands = listOf(
+        IntroduceCommand(),
+        GreetingCommand(),
+        ImBackCommand(),
+        ByeCommand(),
+        StopCommand(),
+        ShutdownCommand(),
+        NoCommand(),
+        WeatherCommand(),
+        TemperatureCommand(),
+        TimeCommand(),
+        DateCommand()
+    )
 
     @JvmStatic
     fun main(args: Array<String>) {
