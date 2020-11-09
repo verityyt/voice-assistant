@@ -44,7 +44,7 @@ object VoiceRecognition {
                     val firstDoc = Jsoup.parse(Jarvis.driver.pageSource)
                     val firstElement = firstDoc.getElementsByClass("D5aOJc").first()
 
-                     Thread.sleep(1500) // Checking if user stopped speaking within 1.5 seconds
+                     Thread.sleep(1000) // Checking if user stopped speaking within 1 seconds
 
                     val secondDoc = Jsoup.parse(Jarvis.driver.pageSource)
                     val secondElement = secondDoc.getElementsByClass("D5aOJc").first()
@@ -88,7 +88,7 @@ object VoiceRecognition {
             val firstDoc = Jsoup.parse(Jarvis.driver.pageSource)
             val firstElement = firstDoc.getElementsByClass("D5aOJc").first()
 
-            Thread.sleep(1500) // Checking if user stopped speaking within 1.5 seconds
+            Thread.sleep(1000) // Checking if user stopped speaking within 1 seconds
 
             val secondDoc = Jsoup.parse(Jarvis.driver.pageSource)
             val secondElement = secondDoc.getElementsByClass("D5aOJc").first()
