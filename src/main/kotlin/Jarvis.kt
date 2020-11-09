@@ -1,6 +1,8 @@
+import backend.Configuration
 import backend.VoiceRecognition
 import backend.VoiceSynthesizer
 import backend.commands.*
+import backend.commands.system.SettingsCommand
 import backend.commands.weather.TemperatureCommand
 import backend.commands.weather.WeatherCommand
 import org.openqa.selenium.chrome.ChromeDriver
@@ -17,7 +19,8 @@ object Jarvis {
 
     private lateinit var tabs: ArrayList<String>
 
-    val keyword = "hey jarvis"
+    var keyword = ""
+    var weatherUrl = ""
 
     val commands = listOf(
         IntroduceCommand(),
@@ -30,13 +33,19 @@ object Jarvis {
         WeatherCommand(),
         TemperatureCommand(),
         TimeCommand(),
-        DateCommand()
+        DateCommand(),
+        SettingsCommand()
     )
 
     @JvmStatic
     fun main(args: Array<String>) {
 
         println("[VoiceAssistant] Starting WebDriver...")
+
+        Configuration.create()
+
+        keyword = Configuration.get("keyword")
+        weatherUrl = Configuration.get("weather.com").replace("\\","")
 
         val prefs: MutableMap<String, Any> = HashMap()
         prefs["profile.default_content_setting_values.media_stream_mic"] = 1

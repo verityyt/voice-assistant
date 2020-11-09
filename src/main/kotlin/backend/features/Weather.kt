@@ -1,20 +1,17 @@
 package backend.features
 
 import org.jsoup.Jsoup
-import secrets.weatherUrl
 
 class Weather {
 
     fun getTemperature(): String {
-        val html = Jsoup.parse(khttp.get(weatherUrl).text)
-        val temp = html.getElementsByClass("CurrentConditions--tempValue--3KcTQ").first().text().replace("°","")
-        return temp
+        val html = Jsoup.parse(khttp.get(Jarvis.weatherUrl).text)
+        return html.getElementsByClass("CurrentConditions--tempValue--3KcTQ").first().text().replace("°", "")
     }
 
     fun getWeather(): String {
-        val html = Jsoup.parse(khttp.get(weatherUrl).text)
-        val weather = html.getElementsByClass("CurrentConditions--phraseValue--2xXSr").first().text()
-        return weather
+        val html = Jsoup.parse(khttp.get(Jarvis.weatherUrl).text)
+        return html.getElementsByClass("CurrentConditions--phraseValue--2xXSr").first().text()
     }
 
 }
