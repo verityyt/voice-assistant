@@ -7,7 +7,7 @@ import backend.VoiceSynthesizer
 
 class SettingsCommand : VoiceCommand() {
 
-    override val keywords: List<String> = listOf("importiere andere einstellungen", "übernehme andere einstellungs")
+    override val keywords: List<String> = listOf("importiere andere einstellungen", "übernehme andere einstellungen", "übernehme neue einstellungen", "importiere neue einstellungen")
 
     override fun perform(input: String) {
 

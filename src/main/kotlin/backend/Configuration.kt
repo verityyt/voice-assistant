@@ -18,9 +18,11 @@ object Configuration {
 
             val json = JSONObject()
 
+            json["name"] = "J.A.R.V.I.S."
             json["keyword"] = "hey jarvis"
             json["weather.com"] =
                 "https://weather.com/de-DE/wetter/heute/l/5ca23443513a0fdc1d37ae2ffaf5586162c6fe592a66acc9320a0d0536be1bb9"
+            json["email"] = "jarvis@verity-network.de"
 
             file.writeText(json.toJSONString())
 
@@ -28,14 +30,14 @@ object Configuration {
         }
 
         if (!checkOptions()) {
-            println("[Configuration] Creating other configuration...")
+            println("[Configuration] Creating options configuration...")
 
             val json = JSONObject()
 
             json["filename"] = "default"
             options.writeText(json.toJSONString())
 
-            println("[Configuration] Other Configuration created!")
+            println("[Configuration] Options Configuration created!")
         }
 
         val optionsJson = JSONParser().parse(options.readText()) as JSONObject

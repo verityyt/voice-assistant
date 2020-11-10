@@ -1,5 +1,5 @@
 # Project exclude paths
 /.gradle/
-/src/main/kotlin/secrets/
 /files/default.json
 /files/options.json
+/src/main/kotlin/secrets/

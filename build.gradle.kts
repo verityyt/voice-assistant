@@ -14,6 +14,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     testCompile("junit", "junit", "4.12")
 
+    implementation("javax.mail:mail:1.4.1")
     implementation("com.googlecode.json-simple:json-simple:1.1")
     implementation("org.jsoup:jsoup:1.8.3")
 }

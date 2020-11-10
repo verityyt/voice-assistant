@@ -2,6 +2,7 @@
   <library name="selenium-server-standalone-3.141.59">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../../Utils/APIs/selenium-server-standalone-3.141.59.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Utils/APIs/khttp-1.0.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
