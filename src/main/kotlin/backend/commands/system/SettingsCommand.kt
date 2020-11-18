@@ -16,13 +16,13 @@ class SettingsCommand : VoiceCommand() {
 
         if(answer != "") {
 
-            VoiceSynthesizer.speakText("Importiere neue Einstellungen...")
+            VoiceSynthesizer.speakText("Importiere Einstellungen aus ${answer}.json")
             val import = Configuration.import(answer.toLowerCase())
 
             if(import) {
-                VoiceSynthesizer.speakText("Import erfolgreich, neue Einstellungen wurden übernommen.")
+                VoiceSynthesizer.speakText("Import erfolgreich, Einstellungen wurden übernommen.")
             }else {
-                VoiceSynthesizer.speakText("Das importieren dieser Datei ist fehlgeschlagen, bitte versuchen sie es mit einer anderen Datei.")
+                VoiceSynthesizer.speakText("Das importieren aus ${answer}.json ist fehlgeschlagen, bitte versuchen sie es mit einer anderen Datei.")
             }
 
         }else {

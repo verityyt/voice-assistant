@@ -35,6 +35,7 @@ object Configuration {
             val json = JSONObject()
 
             json["filename"] = "default"
+            json["setup"] = "true"
             options.writeText(json.toJSONString())
 
             println("[Configuration] Options Configuration created!")
@@ -51,6 +52,18 @@ object Configuration {
         return json[key].toString()
     }
 
+    fun getFromOptions(key: String): String {
+        val json = JSONParser().parse(options.readText()) as JSONObject
+
+        return json[key].toString()
+    }
+
+    fun setOptionsValue(key: String, value: String) {
+        val json = JSONParser().parse(options.readText()) as JSONObject
+        json[key] = value
+        options.writeText(json.toJSONString())
+    }
+
     fun import(name: String): Boolean {
         file = File("files/$name.json")
 
@@ -60,9 +73,7 @@ object Configuration {
             Jarvis.keyword = json["keyword"].toString()
             Jarvis.weatherUrl = json["weather.com"].toString().replace("\\","")
 
-            val optionsJson = JSONParser().parse(options.readText()) as JSONObject
-            optionsJson["filename"] = name
-            options.writeText(optionsJson.toJSONString())
+            setOptionsValue("filename", name)
 
             return true
         }

@@ -71,7 +71,7 @@ PLACEHOLDER
         var result = ""
 
         when(answer2.toLowerCase()) {
-             "ja" -> {
+            "ja" -> {
                 Thread {
                     EmailClient.sendMail(
                         Jarvis.email,
