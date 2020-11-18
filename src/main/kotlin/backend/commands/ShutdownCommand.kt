@@ -1,7 +1,7 @@
 package backend.commands
 
-import backend.VoiceCommand
-import backend.VoiceSynthesizer
+import backend.core.VoiceCommand
+import backend.core.VoiceSynthesizer
 
 class ShutdownCommand : VoiceCommand() {
 

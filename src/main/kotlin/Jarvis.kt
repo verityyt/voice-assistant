@@ -1,6 +1,6 @@
-import backend.Configuration
-import backend.VoiceRecognition
-import backend.VoiceSynthesizer
+import backend.core.Configuration
+import backend.core.VoiceRecognition
+import backend.core.VoiceSynthesizer
 import backend.commands.*
 import backend.commands.google.SearchCommand
 import backend.commands.system.SettingsCommand

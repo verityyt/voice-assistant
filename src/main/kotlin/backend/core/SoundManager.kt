@@ -1,4 +1,4 @@
-package backend
+package backend.core
 
 import java.io.File
 import javax.sound.sampled.AudioSystem

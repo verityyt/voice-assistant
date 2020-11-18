@@ -1,4 +1,4 @@
-package backend
+package backend.core
 
 import org.jsoup.Jsoup
 import org.openqa.selenium.By

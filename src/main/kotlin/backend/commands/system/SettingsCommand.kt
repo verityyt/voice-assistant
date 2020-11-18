@@ -1,9 +1,9 @@
 package backend.commands.system
 
-import backend.Configuration
-import backend.VoiceCommand
-import backend.VoiceRecognition
-import backend.VoiceSynthesizer
+import backend.core.Configuration
+import backend.core.VoiceCommand
+import backend.core.VoiceRecognition
+import backend.core.VoiceSynthesizer
 
 class SettingsCommand : VoiceCommand() {
 

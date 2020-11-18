@@ -1,8 +1,8 @@
 package backend.commands.google
 
-import backend.VoiceCommand
-import backend.VoiceRecognition
-import backend.VoiceSynthesizer
+import backend.core.VoiceCommand
+import backend.core.VoiceRecognition
+import backend.core.VoiceSynthesizer
 import backend.features.EmailClient
 import org.jsoup.Jsoup
 import java.util.ArrayList

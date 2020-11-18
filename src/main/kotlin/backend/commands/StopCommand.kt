@@ -1,7 +1,7 @@
 package backend.commands
 
-import backend.VoiceCommand
-import backend.VoiceRecognition
+import backend.core.VoiceCommand
+import backend.core.VoiceRecognition
 
 class StopCommand : VoiceCommand() {
 

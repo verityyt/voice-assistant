@@ -1,8 +1,8 @@
 package backend.commands
 
-import backend.VoiceCommand
-import backend.VoiceRecognition
-import backend.VoiceSynthesizer
+import backend.core.VoiceCommand
+import backend.core.VoiceRecognition
+import backend.core.VoiceSynthesizer
 import java.text.SimpleDateFormat
 import java.util.*
 
