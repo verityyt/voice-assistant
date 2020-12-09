@@ -3,6 +3,7 @@ import backend.core.VoiceRecognition
 import backend.core.VoiceSynthesizer
 import backend.commands.*
 import backend.commands.google.SearchCommand
+import backend.commands.system.LockCommand
 import backend.commands.system.SettingsCommand
 import backend.commands.weather.TemperatureCommand
 import backend.commands.weather.WeatherCommand
@@ -26,6 +27,9 @@ object Jarvis {
     var weatherUrl = ""
     var email = ""
     var name = ""
+    var pin = ""
+
+    var locked = false
 
     val commands = listOf(
         IntroduceCommand(),
@@ -40,7 +44,8 @@ object Jarvis {
         TimeCommand(),
         DateCommand(),
         SettingsCommand(),
-        SearchCommand()
+        SearchCommand(),
+        LockCommand()
     )
 
     @JvmStatic
@@ -54,6 +59,7 @@ object Jarvis {
         weatherUrl = Configuration.get("weather.com").replace("\\", "")
         email = Configuration.get("email")
         name = Configuration.get("name")
+        pin = Configuration.get("pin")
 
         val prefs: MutableMap<String, Any> = HashMap()
         prefs["profile.default_content_setting_values.media_stream_mic"] = 1

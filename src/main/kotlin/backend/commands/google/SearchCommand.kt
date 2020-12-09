@@ -40,7 +40,6 @@ class SearchCommand : VoiceCommand() {
         VoiceSynthesizer.speakText("Ich habe ${results.size} Suchergebnisse gefunden. Soll ich sie ihnen per Email schicken?")
 
         checkAnswer(answer, results)
-
         VoiceRecognition.startRecognition()
     }
 

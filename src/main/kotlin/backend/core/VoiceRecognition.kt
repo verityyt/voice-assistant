@@ -25,6 +25,21 @@ object VoiceRecognition {
         while (!success) {
             if (Jarvis.driver.pageSource.toLowerCase().contains(Jarvis.keyword)) {
 
+                if(Jarvis.locked) {
+                    success = true
+                    VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie mir ihren PIN Code")
+                    val pin = startReactiveRecognition()
+
+                    if(pin == Jarvis.pin) {
+                        Jarvis.locked = false
+                        VoiceSynthesizer.speakText("Korrekter PIN Code, entsperrt")
+                        startRecognition()
+                    }else {
+                        VoiceSynthesizer.speakText("Zugriff verweigert, falscher PIN Code")
+                        startRecognition()
+                    }
+                }
+
                 println("[VoiceRecognition] Recognized keyword, stopping general recognition")
                 microphoneButton.click() // Stopping recognition
 
