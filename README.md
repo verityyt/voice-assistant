@@ -14,8 +14,8 @@ This voice assistant helps you in your everyday life with useful features like v
 - etc
 
 ## FAQ
-## Which os is supported?
+### Which os is supported?
 Current is only Windows 10 supported.
 
-## What else do you need?
+### What else do you need?
 You need to have Chrome 87 installed.
