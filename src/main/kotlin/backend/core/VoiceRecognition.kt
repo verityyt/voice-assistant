@@ -80,6 +80,10 @@ object VoiceRecognition {
                     }
                 }
             }
+
+            if(microphoneButton.getAttribute("aria-pressed") == "false") {
+                microphoneButton.click()
+            }
         }
 
     }
@@ -123,6 +127,10 @@ object VoiceRecognition {
                 success = true
 
             }
+
+            if(microphoneButton.getAttribute("aria-pressed") == "false") {
+                microphoneButton.click()
+            }
         }
 
     }
@@ -162,6 +170,10 @@ object VoiceRecognition {
 
                 return element.text()
 
+            }
+
+            if(microphoneButton.getAttribute("aria-pressed") == "false") {
+                microphoneButton.click()
             }
         }
     }
