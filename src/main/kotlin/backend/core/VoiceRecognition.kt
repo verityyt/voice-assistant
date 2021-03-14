@@ -2,10 +2,17 @@ package backend.core
 
 import org.jsoup.Jsoup
 import org.openqa.selenium.By
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.ServerSocket
+import java.net.Socket
 
 object VoiceRecognition {
 
-    fun startRecognition() {
+    private lateinit var pythonThread: Process
+    private lateinit var socket: Socket
+
+    /*fun startRecognition() {
 
         Jarvis.switchTab(0)
 
@@ -176,6 +183,25 @@ object VoiceRecognition {
                 microphoneButton.click()
             }
         }
+    }*/
+
+    fun startPython() {
+        pythonThread = Runtime.getRuntime().exec("python files\\speech_recognizer.py")
+    }
+
+    fun stopPython() {
+        pythonThread.destroy()
+    }
+
+    fun startRecognition() {
+        socket = ServerSocket(9090).accept()
+
+        val reader = BufferedReader(InputStreamReader(socket.getInputStream()))
+
+        while(true) {
+            println(reader.readLine())
+        }
+
     }
 
     private fun handleRecognition(textArea: String) {

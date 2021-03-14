@@ -11,7 +11,7 @@ class SettingsCommand : VoiceCommand() {
 
     override fun perform(input: String) {
 
-        VoiceSynthesizer.speakText("Aus welcher Datei soll ich die Einstellungen übernehmen?")
+        /*VoiceSynthesizer.speakText("Aus welcher Datei soll ich die Einstellungen übernehmen?")
         val answer = VoiceRecognition.startReactiveRecognition()
 
         if(answer != "") {
@@ -27,7 +27,7 @@ class SettingsCommand : VoiceCommand() {
 
         }else {
             VoiceSynthesizer.speakText("Entschludigen sie aber ich konnte sie nicht verstehen. Bitte wiederholen sie Befehl.")
-        }
+        }*/
 
         VoiceRecognition.startRecognition()
     }

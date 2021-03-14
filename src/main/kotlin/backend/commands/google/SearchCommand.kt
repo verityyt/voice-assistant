@@ -15,7 +15,7 @@ class SearchCommand : VoiceCommand() {
         listOf("Nachwas soll ich suchen", "Was soll ich suchen", "Wonach soll ich suchen", "Was soll ich googlen")
 
     override fun perform(input: String) {
-        VoiceSynthesizer.speakText(whatQuestion.random())
+        /*VoiceSynthesizer.speakText(whatQuestion.random())
 
         val answer = VoiceRecognition.startReactiveRecognition()
         val url =
@@ -62,10 +62,10 @@ PLACEHOLDER
             replacement += """<a href="${result.value}">${result.key}</a><br><br>"""
         }
 
-        return template.replace("PLACEHOLDER", replacement)
+        return template.replace("PLACEHOLDER", replacement)*/
     }
 
-    private fun checkAnswer(answer: String, results: HashMap<String, String>): String {
+    /*private fun checkAnswer(answer: String, results: HashMap<String, String>): String {
         val answer2 = VoiceRecognition.startReactiveRecognition()
         var result = ""
 
@@ -90,6 +90,6 @@ PLACEHOLDER
         }
 
         return result
-    }
+    }*/
 
 }

@@ -13,8 +13,6 @@ object VoiceSynthesizer {
             text
         }
 
-        Jarvis.switchTab(1)
-
         val textarea = Jarvis.driver.findElement(By.id("voicetext"))
         textarea.clear()
         textarea.sendKeys(enterText)

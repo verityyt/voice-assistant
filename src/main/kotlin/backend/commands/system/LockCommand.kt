@@ -9,7 +9,7 @@ class LockCommand : VoiceCommand() {
 
     override fun perform(input: String) {
 
-        VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie mir ihren PIN Code")
+        /*VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie mir ihren PIN Code")
         val answer = VoiceRecognition.startReactiveRecognition()
 
         if(answer == Jarvis.pin) {
@@ -19,7 +19,7 @@ class LockCommand : VoiceCommand() {
         }else {
             VoiceSynthesizer.speakText("Zugriff verweigert, falscher PIN Code")
             VoiceRecognition.startRecognition()
-        }
+        }*/
 
     }
 

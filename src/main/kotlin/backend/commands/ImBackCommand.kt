@@ -12,7 +12,7 @@ class ImBackCommand : VoiceCommand() {
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Willkommen zuhause sir. ${offers.random()}")
-        VoiceRecognition.startActiveRecognition()
+        /*VoiceRecognition.startActiveRecognition()*/
     }
 
 }

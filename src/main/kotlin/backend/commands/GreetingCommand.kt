@@ -12,7 +12,7 @@ class GreetingCommand : VoiceCommand() {
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Hallo, ${offers.random()}")
-        VoiceRecognition.startActiveRecognition()
+        /*VoiceRecognition.startActiveRecognition()*/
     }
 
 }
