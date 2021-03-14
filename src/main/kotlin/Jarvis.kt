@@ -60,7 +60,7 @@ object Jarvis {
         name = Configuration.get("name")
         pin = Configuration.get("pin")
 
-        val prefs: MutableMap<String, Any> = HashMap()
+        /*val prefs: MutableMap<String, Any> = HashMap()
         prefs["profile.default_content_setting_values.media_stream_mic"] = 1
         val options = ChromeOptions()
         options.setExperimentalOption("prefs", prefs)
@@ -68,21 +68,6 @@ object Jarvis {
         System.setProperty("webdriver.chrome.driver", "files/chromedriver.exe")
         driver = ChromeDriver(options)
 
-        driver.get("https://translate.google.com/?hl=de&ui=tob&sl=de&tl=en&op=translate")
-
-        val iframe = driver.findElement(By.className("gb_da"))
-
-        if(iframe != null) {
-            driver.switchTo().frame(iframe)
-            driver.findElement(By.xpath("//span[text()='Ich stimme zu']")).click()
-        }else {
-            println("iframe not found!")
-        }
-
-        driver.executeScript("window.open('','_blank');")
-
-        tabs = ArrayList(driver.windowHandles)
-        driver.switchTo().window(tabs[1])
         driver.get("https://ttsmp3.com/text-to-speech/German/")
         val voice = Select(driver.findElement(By.id("sprachwahl")))
         voice.selectByValue("Hans")
@@ -91,8 +76,9 @@ object Jarvis {
             startSetup()
         }
 
-        VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
+        VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")*/
 
+        VoiceRecognition.startPython()
         VoiceRecognition.startRecognition()
 
     }
@@ -102,7 +88,7 @@ object Jarvis {
         exitProcess(-1)
     }
 
-    fun switchTab(index: Int) {
+    /*fun switchTab(index: Int) {
 
         driver.switchTo().window(tabs[index])
 
@@ -145,6 +131,6 @@ object Jarvis {
             importSettings()
         }
 
-    }
+    }*/
 
 }
