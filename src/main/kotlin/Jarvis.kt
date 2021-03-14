@@ -15,7 +15,6 @@ import java.util.HashMap
 import kotlin.system.exitProcess
 import java.util.ArrayList
 
-
 object Jarvis {
 
     @JvmStatic
@@ -70,6 +69,15 @@ object Jarvis {
         driver = ChromeDriver(options)
 
         driver.get("https://translate.google.com/?hl=de&ui=tob&sl=de&tl=en&op=translate")
+
+        val iframe = driver.findElement(By.className("gb_da"))
+
+        if(iframe != null) {
+            driver.switchTo().frame(iframe)
+            driver.findElement(By.xpath("//span[text()='Ich stimme zu']")).click()
+        }else {
+            println("iframe not found!")
+        }
 
         driver.executeScript("window.open('','_blank');")
 
