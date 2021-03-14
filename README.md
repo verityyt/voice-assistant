@@ -18,4 +18,4 @@ This voice assistant helps you in your everyday life with useful features like v
 Current is only Windows 10 supported.
 
 ### What else do you need?
-You need to have Chrome 87 installed.
+You need to have Chrome 88 installed.
