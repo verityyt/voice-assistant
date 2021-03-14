@@ -2,4 +2,5 @@
 /.gradle/
 /files/default.json
 /files/options.json
+/files/home.json
 /src/main/kotlin/secrets/
