@@ -135,7 +135,7 @@ object VoiceRecognizer {
 
                     for (command in VoiceAssistant.commands) {
                         if (command.keywords.contains(text.toLowerCase())) {
-                            println("Called ${command.javaClass.name}")
+                            Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
                             command.perform(text.toLowerCase())
                             currentCommand = command
                             found = true
