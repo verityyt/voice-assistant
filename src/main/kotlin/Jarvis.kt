@@ -1,8 +1,6 @@
-import backend.core.Configuration
-import backend.core.VoiceRecognition
-import backend.core.VoiceSynthesizer
 import backend.commands.*
-import backend.core.VoiceCommand
+import backend.commands.tasks.SetupTask
+import backend.core.*
 import org.openqa.selenium.By
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
@@ -23,6 +21,7 @@ object Jarvis {
     var locked = false
 
     val commands = listOf<VoiceCommand>(
+        SetupTask(),
         ByeCommand()
         /*IntroduceCommand(),
         GreetingCommand(),
@@ -42,7 +41,7 @@ object Jarvis {
     @JvmStatic
     fun main(args: Array<String>) {
 
-        println("[VoiceAssistant] Starting WebDriver...")
+        Logger.info("Starting up voice assistant...", this.javaClass.name)
 
         Configuration.create()
 
@@ -61,46 +60,30 @@ object Jarvis {
         val voice = Select(driver.findElement(By.id("sprachwahl")))
         voice.selectByValue("Hans")
 
-        VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
+        VoiceRecognizer.startup()
 
-        VoiceRecognition.startup()
+        if(Configuration.getFromOptions("setup") == "true") {
+            startSetup()
+        }else {
+            VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
+        }
 
     }
 
     fun shutdown() {
         driver.quit()
+        VoiceRecognizer.shutdown()
         exitProcess(-1)
     }
 
-    /*fun switchTab(index: Int) {
-
-        driver.switchTo().window(tabs[index])
-
-    }
-
     private fun startSetup() {
-        VoiceSynthesizer.speakText("Guten Tag sir, ich starte die Einrichtung. Soll ich neue Einstellungen importieren")
-        checkAnswer()
+        println("Starting setup...")
+        VoiceRecognizer.activated = true
+        VoiceRecognizer.currentCommand = SetupTask()
+        (VoiceRecognizer.currentCommand as SetupTask).perform("")
     }
 
-    private fun checkAnswer() {
-        val answer = VoiceRecognition.startReactiveRecognition()
-
-        when (answer.toLowerCase()) {
-            "ja" -> {
-                importSettings()
-            }
-            "nein" -> {
-                VoiceSynthesizer.speakText("Okay")
-            }
-            else -> {
-                VoiceSynthesizer.speakText("Ich konnte sie nicht verstehen, bitte wiederholen sie ihre Antwort")
-                checkAnswer()
-            }
-        }
-    }
-
-    private fun importSettings() {
+    /*private fun importSettings() {
         VoiceSynthesizer.speakText("Aus welcher Datei soll ich die Einstellungen importieren")
         val answer = VoiceRecognition.startReactiveRecognition()
 
