@@ -22,16 +22,16 @@ object VoiceSynthesizer {
         textarea.clear()
         textarea.sendKeys(enterText)
 
-        val playSound = VoiceAssistant.driver.findElement(By.id("vorlesenbutton"))
-        playSound.click()
+        val playButton = VoiceAssistant.driver.findElement(By.id("vorlesenbutton"))
+        playButton.click()
 
-        var playTime = 0L
+        while(true) {
+            val value = playButton.getAttribute("value")
 
-        for(char in text) {
-            playTime += 90
+            if(value == "Read") {
+                break
+            }
         }
-
-        Thread.sleep(playTime)
 
         if(shutdown) {
             VoiceAssistant.shutdown()
