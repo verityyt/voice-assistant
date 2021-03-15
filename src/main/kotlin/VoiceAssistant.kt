@@ -26,7 +26,8 @@ object VoiceAssistant {
         SetupTask(),
         DateCommand(),
         ByeCommand(),
-        GreetingCommand()
+        GreetingCommand(),
+        ImBackCommand()
     )
 
     @JvmStatic

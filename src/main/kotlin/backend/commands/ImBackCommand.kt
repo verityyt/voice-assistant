@@ -1,10 +1,13 @@
 package backend.commands
 
+import backend.core.SoundManager
 import backend.core.VoiceCommand
-import backend.core.VoiceRecognition
+import backend.core.VoiceRecognizer
 import backend.core.VoiceSynthesizer
 
 class ImBackCommand : VoiceCommand() {
+
+    override val needsReaction: Boolean = false
 
     override val keywords: List<String> = listOf("ich bin wieder da", "ich bin wieder zurück", "ich bin wieder zuhause")
 
@@ -12,7 +15,8 @@ class ImBackCommand : VoiceCommand() {
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Willkommen zuhause sir. ${offers.random()}")
-        /*VoiceRecognition.startActiveRecognition()*/
+        VoiceRecognizer.activated = true
+        SoundManager.playSound("start")
     }
 
 }

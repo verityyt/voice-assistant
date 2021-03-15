@@ -104,7 +104,6 @@ object VoiceRecognizer {
                     VoiceSynthesizer.speakText("Ja, sir?")
                 }
 
-
                 SoundManager.playSound("start")
                 activated = true
             }
