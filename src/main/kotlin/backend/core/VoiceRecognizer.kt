@@ -13,7 +13,6 @@ object VoiceRecognizer {
     private lateinit var pythonThread: Process
     private lateinit var socket: Socket
     private var currentInput = ""
-    private var keyword = Configuration.get("keyword")
 
     var currentCommand: VoiceCommand? = null
     var activated = false
@@ -90,7 +89,7 @@ object VoiceRecognizer {
     private fun handleRecognition(text: String) {
 
         if (!activated) {
-            if (text.contains(keyword)) {
+            if (text.contains(VoiceAssistant.keyword.toLowerCase())) {
                 if (VoiceAssistant.locked) {
                     if (unlockState == 0) {
                         VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
@@ -109,7 +108,7 @@ object VoiceRecognizer {
                     SoundManager.playSound("start")
                     activated = true
                 }
-            } else if (keyword == "jarvis" && text.contains("davis")) {
+            } else if (VoiceAssistant.keyword.toLowerCase().contains("jarvis") && (text.contains("davis") || text.contains("tarvis"))) {
                 if (VoiceAssistant.locked) {
                     if (unlockState == 0) {
                         VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
@@ -130,8 +129,9 @@ object VoiceRecognizer {
                 }
             }
         } else {
+            SoundManager.playSound("end")
+
             if (VoiceAssistant.locked && unlockState == 1) {
-                SoundManager.playSound("end")
                 if (text == VoiceAssistant.pin) {
                     VoiceSynthesizer.speakText("Korrekter PIN Code, entsperrt")
                     VoiceAssistant.locked = false
