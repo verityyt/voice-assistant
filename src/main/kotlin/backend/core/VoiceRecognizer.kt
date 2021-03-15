@@ -12,6 +12,7 @@ object VoiceRecognizer {
     private lateinit var pythonThread: Process
     private lateinit var socket: Socket
     private var currentInput = ""
+    private var keyword = Configuration.get("keyword")
 
     var currentCommand: VoiceCommand? = null
     var activated = false
@@ -86,7 +87,7 @@ object VoiceRecognizer {
     private fun handleRecognition(text: String) {
 
         if (!activated) {
-            if (text.contains("jarvis")) {
+            if (text.contains(keyword)) {
                 Logger.info("Detected keyword => Listening now", this.javaClass.name)
 
                 SoundManager.playSound("start")
