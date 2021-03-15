@@ -1,5 +1,5 @@
 import backend.commands.*
-import backend.commands.tasks.DateCommand
+import backend.commands.DateCommand
 import backend.commands.tasks.SetupTask
 import backend.core.*
 import org.openqa.selenium.By
@@ -23,8 +23,9 @@ object VoiceAssistant {
 
     val commands = listOf(
         SetupTask(),
+        DateCommand(),
         ByeCommand(),
-        DateCommand()
+        GreetingCommand()
     )
 
     @JvmStatic

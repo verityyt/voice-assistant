@@ -1,10 +1,13 @@
 package backend.commands
 
+import backend.core.SoundManager
 import backend.core.VoiceCommand
-import backend.core.VoiceRecognition
+import backend.core.VoiceRecognizer
 import backend.core.VoiceSynthesizer
 
 class GreetingCommand : VoiceCommand() {
+
+    override val needsReaction: Boolean = false
 
     override val keywords: List<String> = listOf("hallo", "guten morgen", "guten tag", "guten abend", "servus", "Hi")
 
@@ -12,7 +15,8 @@ class GreetingCommand : VoiceCommand() {
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Hallo, ${offers.random()}")
-        /*VoiceRecognition.startActiveRecognition()*/
+        SoundManager.playSound("start")
+        VoiceRecognizer.activated = true
     }
 
 }
