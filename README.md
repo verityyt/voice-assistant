@@ -18,9 +18,7 @@ This voice assistant helps you in your everyday life with useful features like v
 Current is only Windows 10 supported.
 
 ### What else do you need?
-- Chrome 88 installed
+- Chrome 88
 - Python 3.9
     + SpeechRecognition module
     + PyAudio module
-
-You need to have Chrome 88 installed.
