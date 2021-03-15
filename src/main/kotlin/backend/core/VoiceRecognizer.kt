@@ -90,43 +90,9 @@ object VoiceRecognizer {
 
         if (!activated) {
             if (text.contains(VoiceAssistant.keyword.toLowerCase())) {
-                if (VoiceAssistant.locked) {
-                    if (unlockState == 0) {
-                        VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
-                        SoundManager.playSound("start")
-                        activated = true
-                        unlockState = 1
-                    }
-                } else {
-                    Logger.info("Detected keyword => Listening now", this.javaClass.name)
-
-                    if (Random.nextBoolean()) {
-                        VoiceSynthesizer.speakText("Ja, sir?")
-                    }
-
-
-                    SoundManager.playSound("start")
-                    activated = true
-                }
+                handleKeywordDetection(text)
             } else if (VoiceAssistant.keyword.toLowerCase().contains("jarvis") && (text.contains("davis") || text.contains("tarvis"))) {
-                if (VoiceAssistant.locked) {
-                    if (unlockState == 0) {
-                        VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
-                        SoundManager.playSound("start")
-                        activated = true
-                        unlockState = 1
-                    }
-                } else {
-                    Logger.info("Detected keyword => Listening now", this.javaClass.name)
-
-                    if (Random.nextBoolean()) {
-                        VoiceSynthesizer.speakText("Ja, sir?")
-                    }
-
-
-                    SoundManager.playSound("start")
-                    activated = true
-                }
+                handleKeywordDetection(text)
             }
         } else {
             SoundManager.playSound("end")
@@ -167,6 +133,27 @@ object VoiceRecognizer {
             }
         }
 
+    }
+
+    fun handleKeywordDetection(input: String) {
+        if (VoiceAssistant.locked) {
+            if (unlockState == 0) {
+                VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
+                SoundManager.playSound("start")
+                activated = true
+                unlockState = 1
+            }
+        } else {
+            Logger.info("Detected keyword => Listening now", this.javaClass.name)
+
+            if (Random.nextBoolean()) {
+                VoiceSynthesizer.speakText("Ja, sir?")
+            }
+
+
+            SoundManager.playSound("start")
+            activated = true
+        }
     }
 
 }
