@@ -91,6 +91,16 @@ object VoiceRecognizer {
 
                 SoundManager.playSound("start")
                 activated = true
+            }else if(keyword == "jarvis" && text.contains("davis")) {
+                Logger.info("Detected keyword => Listening now", this.javaClass.name)
+
+                if(true/*Random.nextBoolean()*/) {
+                    VoiceSynthesizer.speakText("Ja, sir?")
+                }
+
+
+                SoundManager.playSound("start")
+                activated = true
             }
         } else {
             SoundManager.playSound("end")
