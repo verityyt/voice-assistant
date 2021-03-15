@@ -18,6 +18,7 @@ object VoiceAssistant {
     var email = ""
     var name = ""
     var pin = ""
+    var voice = ""
 
     var locked = false
 
@@ -48,7 +49,12 @@ object VoiceAssistant {
 
         driver.get("https://ttsmp3.com/text-to-speech/German/")
         val voice = Select(driver.findElement(By.id("sprachwahl")))
-        voice.selectByValue("Hans")
+
+        if(this.voice == "female") {
+            voice.selectByValue("Marlene")
+        }else {
+            voice.selectByValue("Hans")
+        }
 
         VoiceRecognizer.startup()
 

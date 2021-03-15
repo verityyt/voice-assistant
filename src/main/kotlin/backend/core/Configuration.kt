@@ -24,6 +24,7 @@ object Configuration {
                 "https://weather.com/de-DE/wetter/heute/l/5ca23443513a0fdc1d37ae2ffaf5586162c6fe592a66acc9320a0d0536be1bb9"
             json["email"] = "jarvis@verity-network.de"
             json["pin"] = "0000"
+            json["voice"] = "male"
 
             file.writeText(json.toJSONString())
 
@@ -76,6 +77,7 @@ object Configuration {
             VoiceAssistant.weatherUrl = json["weather.com"].toString().replace("\\","")
             VoiceAssistant.email = json["email"].toString()
             VoiceAssistant.pin = json["pin"].toString()
+            VoiceAssistant.voice = json["voice"].toString()
 
             setOptionsValue("filename", name)
 
