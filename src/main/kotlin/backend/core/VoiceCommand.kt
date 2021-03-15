@@ -8,6 +8,6 @@ abstract class VoiceCommand {
 
     abstract fun perform(input: String)
 
-    fun reaction(input: String) {}
+    open fun reaction(input: String) {}
 
 }
