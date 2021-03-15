@@ -6,6 +6,8 @@ object VoiceSynthesizer {
 
     fun speakText(text: String) {
 
+        Logger.debug("Speaking now => '$text'",this.javaClass.name)
+
         val shutdown = text.endsWith("[shutdown]")
         val enterText = if(shutdown) {
             text.replace("[shutdown]","")
