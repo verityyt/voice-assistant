@@ -1,10 +1,13 @@
 package backend.core
 
 import org.openqa.selenium.By
+import java.util.ArrayList
 
 object VoiceSynthesizer {
 
     fun speakText(text: String) {
+
+        VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[0])
 
         val shutdown = text.endsWith("[shutdown]")
         val enterText = if(shutdown) {
