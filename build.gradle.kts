@@ -8,6 +8,10 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven {
+        name = "jitpack.io"
+        url = uri("https://jitpack.io")
+    }
 }
 
 dependencies {
@@ -17,4 +21,6 @@ dependencies {
     implementation("javax.mail:mail:1.4.1")
     implementation("com.googlecode.json-simple:json-simple:1.1")
     implementation("org.jsoup:jsoup:1.8.3")
+    implementation("com.github.jkcclemens:khttp:-SNAPSHOT")
+    implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
 }
