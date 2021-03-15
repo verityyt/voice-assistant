@@ -11,9 +11,10 @@ object VoiceRecognition {
 
     private lateinit var pythonThread: Process
     private lateinit var socket: Socket
-    private var activated = false
     private var currentInput = ""
+
     var currentCommand: VoiceCommand? = null
+    var activated = false
 
     fun startup() {
         startPython()
@@ -92,10 +93,10 @@ object VoiceRecognition {
                 activated = true
             }
         } else {
+            SoundManager.playSound("end")
             if (currentCommand != null && currentCommand!!.needsReaction) {
-                currentCommand!!.reaction(text)
+                currentCommand!!.reaction(text.toLowerCase())
             } else {
-                SoundManager.playSound("end")
                 activated = false
 
                 var found = false
