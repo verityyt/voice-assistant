@@ -4,6 +4,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.ServerSocket
 import java.net.Socket
+import kotlin.random.Random
 import kotlin.system.exitProcess
 
 object VoiceRecognizer {
@@ -88,6 +89,11 @@ object VoiceRecognizer {
         if (!activated) {
             if (text.contains(keyword)) {
                 Logger.info("Detected keyword => Listening now", this.javaClass.name)
+
+                if(Random.nextBoolean()) {
+                    VoiceSynthesizer.speakText("Ja, sir?")
+                }
+
 
                 SoundManager.playSound("start")
                 activated = true
