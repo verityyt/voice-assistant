@@ -28,7 +28,8 @@ object VoiceAssistant {
         ByeCommand(),
         GreetingCommand(),
         ImBackCommand(),
-        IntroduceCommand()
+        IntroduceCommand(),
+        NoCommand()
     )
 
     @JvmStatic
