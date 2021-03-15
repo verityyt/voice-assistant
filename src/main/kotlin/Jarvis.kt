@@ -2,25 +2,17 @@ import backend.core.Configuration
 import backend.core.VoiceRecognition
 import backend.core.VoiceSynthesizer
 import backend.commands.*
-import backend.commands.google.SearchCommand
-import backend.commands.system.LockCommand
-import backend.commands.system.SettingsCommand
-import backend.commands.weather.TemperatureCommand
-import backend.commands.weather.WeatherCommand
+import backend.core.VoiceCommand
 import org.openqa.selenium.By
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.support.ui.Select
-import java.util.HashMap
 import kotlin.system.exitProcess
-import java.util.ArrayList
 
 object Jarvis {
 
     @JvmStatic
     lateinit var driver: ChromeDriver
-
-    private lateinit var tabs: ArrayList<String>
 
     var keyword = ""
     var weatherUrl = ""
@@ -30,11 +22,11 @@ object Jarvis {
 
     var locked = false
 
-    val commands = listOf(
-        IntroduceCommand(),
+    val commands = listOf<VoiceCommand>(
+        ByeCommand()
+        /*IntroduceCommand(),
         GreetingCommand(),
         ImBackCommand(),
-        ByeCommand(),
         StopCommand(),
         ShutdownCommand(),
         NoCommand(),
@@ -44,7 +36,7 @@ object Jarvis {
         DateCommand(),
         SettingsCommand(),
         SearchCommand(),
-        LockCommand()
+        LockCommand()*/
     )
 
     @JvmStatic
@@ -60,11 +52,8 @@ object Jarvis {
         name = Configuration.get("name")
         pin = Configuration.get("pin")
 
-        /*val prefs: MutableMap<String, Any> = HashMap()
-        prefs["profile.default_content_setting_values.media_stream_mic"] = 1
         val options = ChromeOptions()
-        options.setExperimentalOption("prefs", prefs)
-
+        options.setHeadless(true)
         System.setProperty("webdriver.chrome.driver", "files/chromedriver.exe")
         driver = ChromeDriver(options)
 
@@ -72,14 +61,9 @@ object Jarvis {
         val voice = Select(driver.findElement(By.id("sprachwahl")))
         voice.selectByValue("Hans")
 
-        if (Configuration.getFromOptions("setup") == "true") {
-            startSetup()
-        }
+        VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
 
-        VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")*/
-
-        VoiceRecognition.startPython()
-        VoiceRecognition.startRecognition()
+        VoiceRecognition.startup()
 
     }
 
