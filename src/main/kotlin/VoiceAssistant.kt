@@ -1,5 +1,6 @@
 import backend.commands.*
 import backend.commands.DateCommand
+import backend.commands.google.SearchCommand
 import backend.commands.system.LockCommand
 import backend.commands.system.SettingsCommand
 import backend.commands.tasks.SetupTask
@@ -40,7 +41,8 @@ object VoiceAssistant {
         WeatherCommand(),
         TemperatureCommand(),
         LockCommand(),
-        SettingsCommand()
+        SettingsCommand(),
+        SearchCommand()
     )
 
     @JvmStatic
