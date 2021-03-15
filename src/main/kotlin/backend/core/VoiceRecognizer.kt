@@ -4,6 +4,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.ServerSocket
 import java.net.Socket
+import kotlin.math.truncate
 import kotlin.random.Random
 import kotlin.system.exitProcess
 
@@ -16,6 +17,8 @@ object VoiceRecognizer {
 
     var currentCommand: VoiceCommand? = null
     var activated = false
+
+    private var unlockState = 0
 
     fun startup() {
         startPython()
@@ -88,46 +91,78 @@ object VoiceRecognizer {
 
         if (!activated) {
             if (text.contains(keyword)) {
-                Logger.info("Detected keyword => Listening now", this.javaClass.name)
+                if (VoiceAssistant.locked) {
+                    if (unlockState == 0) {
+                        VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
+                        SoundManager.playSound("start")
+                        activated = true
+                        unlockState = 1
+                    }
+                } else {
+                    Logger.info("Detected keyword => Listening now", this.javaClass.name)
 
-                if(Random.nextBoolean()) {
-                    VoiceSynthesizer.speakText("Ja, sir?")
+                    if (Random.nextBoolean()) {
+                        VoiceSynthesizer.speakText("Ja, sir?")
+                    }
+
+
+                    SoundManager.playSound("start")
+                    activated = true
                 }
+            } else if (keyword == "jarvis" && text.contains("davis")) {
+                if (VoiceAssistant.locked) {
+                    if (unlockState == 0) {
+                        VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
+                        SoundManager.playSound("start")
+                        activated = true
+                        unlockState = 1
+                    }
+                } else {
+                    Logger.info("Detected keyword => Listening now", this.javaClass.name)
+
+                    if (Random.nextBoolean()) {
+                        VoiceSynthesizer.speakText("Ja, sir?")
+                    }
 
 
-                SoundManager.playSound("start")
-                activated = true
-            }else if(keyword == "jarvis" && text.contains("davis")) {
-                Logger.info("Detected keyword => Listening now", this.javaClass.name)
-
-                if(true/*Random.nextBoolean()*/) {
-                    VoiceSynthesizer.speakText("Ja, sir?")
+                    SoundManager.playSound("start")
+                    activated = true
                 }
-
-                SoundManager.playSound("start")
-                activated = true
             }
         } else {
-            SoundManager.playSound("end")
-            if (currentCommand != null && currentCommand!!.needsReaction) {
-                currentCommand!!.reaction(text.toLowerCase())
-            } else {
-                activated = false
-
-                var found = false
-
-                for (command in VoiceAssistant.commands) {
-                    if (command.keywords.contains(text.toLowerCase())) {
-                        println("Called ${command.javaClass.name}")
-
-                        command.perform(text.toLowerCase())
-                        currentCommand = command
-                        found = true
-                    }
+            if (VoiceAssistant.locked && unlockState == 1) {
+                SoundManager.playSound("end")
+                if (text == VoiceAssistant.pin) {
+                    VoiceSynthesizer.speakText("Korrekter PIN Code, entsperrt")
+                    VoiceAssistant.locked = false
+                    activated = false
+                    unlockState = 0
+                } else {
+                    VoiceSynthesizer.speakText("Zugriff verweigert, falscher PIN Code. Bitte wiederholen sie ihren pin code.")
+                    SoundManager.playSound("start")
                 }
 
-                if (!found) {
-                    VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit $text meinen")
+            } else {
+                if (currentCommand != null && currentCommand!!.needsReaction) {
+                    currentCommand!!.reaction(text.toLowerCase())
+                } else {
+                    activated = false
+
+                    var found = false
+
+                    for (command in VoiceAssistant.commands) {
+                        if (command.keywords.contains(text.toLowerCase())) {
+                            println("Called ${command.javaClass.name}")
+
+                            command.perform(text.toLowerCase())
+                            currentCommand = command
+                            found = true
+                        }
+                    }
+
+                    if (!found) {
+                        VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit $text meinen")
+                    }
                 }
             }
         }

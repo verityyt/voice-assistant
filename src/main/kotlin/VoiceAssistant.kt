@@ -1,5 +1,6 @@
 import backend.commands.*
 import backend.commands.DateCommand
+import backend.commands.system.LockCommand
 import backend.commands.tasks.SetupTask
 import backend.commands.weather.TemperatureCommand
 import backend.commands.weather.WeatherCommand
@@ -22,7 +23,7 @@ object VoiceAssistant {
     var pin = ""
     var voice = ""
 
-    var locked = false
+    var locked = true
 
     val commands = listOf(
         SetupTask(),
@@ -36,7 +37,8 @@ object VoiceAssistant {
         StopCommand(),
         TimeCommand(),
         WeatherCommand(),
-        TemperatureCommand()
+        TemperatureCommand(),
+        LockCommand()
     )
 
     @JvmStatic

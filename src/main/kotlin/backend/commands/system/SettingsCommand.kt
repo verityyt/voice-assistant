@@ -2,10 +2,11 @@ package backend.commands.system
 
 import backend.core.Configuration
 import backend.core.VoiceCommand
-import backend.core.VoiceRecognition
 import backend.core.VoiceSynthesizer
 
 class SettingsCommand : VoiceCommand() {
+
+    override val needsReaction: Boolean = true
 
     override val keywords: List<String> = listOf("importiere andere einstellungen", "übernehme andere einstellungen", "übernehme neue einstellungen", "importiere neue einstellungen")
 
