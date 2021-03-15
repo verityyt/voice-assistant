@@ -42,7 +42,8 @@ object VoiceAssistant {
         TemperatureCommand(),
         LockCommand(),
         SettingsCommand(),
-        SearchCommand()
+        SearchCommand(),
+        JokeCommand()
     )
 
     @JvmStatic
