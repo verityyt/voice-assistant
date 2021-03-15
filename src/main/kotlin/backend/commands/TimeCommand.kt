@@ -11,6 +11,8 @@ class TimeCommand : VoiceCommand() {
 
     override val keywords: List<String> = listOf("wie viel uhr ist es", "wie spät ist es", "wie früh ist es")
 
+    override var state: Int = 0
+
     override fun perform(input: String) {
         val formatter = SimpleDateFormat("HH:mm")
         val time = formatter.format(Date())

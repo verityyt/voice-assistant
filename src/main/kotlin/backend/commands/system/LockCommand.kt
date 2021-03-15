@@ -11,7 +11,7 @@ class LockCommand : VoiceCommand() {
 
     override val keywords: List<String> = listOf("sperren", "sperre dich", "versperren")
 
-    private var state = 0
+    override var state: Int = 0
 
     override fun perform(input: String) {
 

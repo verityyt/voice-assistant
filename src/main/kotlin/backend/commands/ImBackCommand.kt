@@ -13,6 +13,8 @@ class ImBackCommand : VoiceCommand() {
 
     val offers = listOf("wie kann ich ihnen helfen?", "kann ich irgendetwas für sie tun?", "kann ich ihnen irgendwie behilflich sein?")
 
+    override var state: Int = 0
+
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Willkommen zuhause sir. ${offers.random()}")
         VoiceRecognizer.activated = true

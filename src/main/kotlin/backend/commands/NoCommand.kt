@@ -9,6 +9,8 @@ class NoCommand : VoiceCommand() {
 
     override val keywords: List<String> = listOf("nein", "nichts")
 
+    override var state: Int = 0
+
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Ok sir, ich werde mich bereit halten.")
     }

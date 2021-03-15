@@ -8,6 +8,8 @@ class StopCommand : VoiceCommand() {
 
     override val keywords: List<String> = listOf("stopp", "abbruch", "abbrechen")
 
+    override var state: Int = 0
+
     override fun perform(input: String) { }
 
 }

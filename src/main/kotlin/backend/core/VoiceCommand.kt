@@ -10,4 +10,7 @@ abstract class VoiceCommand {
 
     open fun reaction(input: String) {}
 
+    abstract var state: Int
+
+
 }

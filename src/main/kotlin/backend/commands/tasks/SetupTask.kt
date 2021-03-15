@@ -8,7 +8,7 @@ class SetupTask : VoiceCommand() {
 
     override val keywords: List<String> = listOf()
 
-    private var state = 0
+    override var state: Int = 0
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Guten Tag sir, ich starte die Einrichtung. Soll ich neue Einstellungen importieren")

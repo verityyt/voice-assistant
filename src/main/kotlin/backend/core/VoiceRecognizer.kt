@@ -1,5 +1,6 @@
 package backend.core
 
+import backend.commands.StopCommand
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.ServerSocket
@@ -88,10 +89,26 @@ object VoiceRecognizer {
 
     private fun handleRecognition(text: String) {
 
+        if (currentCommand != null) {
+            for (command in VoiceAssistant.commands) {
+                if (command.keywords.contains(text.toLowerCase())) {
+                    if (command is StopCommand) {
+                        Logger.debug("Called stop => Aborting current command", this.javaClass.name)
+
+                        currentCommand!!.state = 0
+                        currentCommand = null
+                        activated = false
+                    }
+                }
+            }
+        }
+
         if (!activated) {
             if (text.contains(VoiceAssistant.keyword.toLowerCase())) {
                 handleKeywordDetection(text)
-            } else if (VoiceAssistant.keyword.toLowerCase().contains("jarvis") && (text.contains("davis") || text.contains("tarvis"))) {
+            } else if (VoiceAssistant.keyword.toLowerCase()
+                    .contains("jarvis") && (text.contains("davis") || text.contains("tarvis"))
+            ) {
                 handleKeywordDetection(text)
             }
         } else {
@@ -119,7 +136,6 @@ object VoiceRecognizer {
                     for (command in VoiceAssistant.commands) {
                         if (command.keywords.contains(text.toLowerCase())) {
                             println("Called ${command.javaClass.name}")
-
                             command.perform(text.toLowerCase())
                             currentCommand = command
                             found = true

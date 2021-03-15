@@ -17,7 +17,7 @@ class SearchCommand : VoiceCommand() {
     private val whatQuestion =
         listOf("Nachwas soll ich suchen", "Was soll ich suchen", "Wonach soll ich suchen", "Was soll ich googlen")
 
-    private var state = 0
+    override var state: Int = 0
 
     private var searchResults = HashMap<String, String>()
     private var searched = ""

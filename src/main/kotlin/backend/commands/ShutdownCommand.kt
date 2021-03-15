@@ -11,6 +11,8 @@ class ShutdownCommand : VoiceCommand() {
 
     val byes = listOf("Bis bald", "Wir hören uns")
 
+    override var state: Int = 0
+
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("${byes.random()}. [shutdown]")
     }

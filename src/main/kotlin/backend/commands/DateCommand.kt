@@ -17,6 +17,8 @@ class DateCommand : VoiceCommand() {
         "welches datum haben wir heute"
     )
 
+    override var state: Int = 0
+
     override fun perform(input: String) {
         val formatter = SimpleDateFormat("EEEEE.dd.MMMMM.yyyy")
         val date = formatter.format(Date())

@@ -13,7 +13,7 @@ class SettingsCommand : VoiceCommand() {
         "importiere neue einstellungen"
     )
 
-    private var state = 0
+    override var state: Int = 0
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Aus welcher Datei soll ich die Einstellungen übernehmen?")

@@ -13,6 +13,8 @@ class GreetingCommand : VoiceCommand() {
 
     val offers = listOf("wie kann ich ihnen helfen?", "kann ich irgendetwas für sie tun?", "kann ich ihnen irgendwie behilflich sein?")
 
+    override var state: Int = 0
+
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Hallo, ${offers.random()}")
         SoundManager.playSound("start")
