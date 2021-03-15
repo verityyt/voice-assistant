@@ -1,4 +1,4 @@
-package backend.commands.tasks
+package backend.commands
 
 import backend.core.VoiceCommand
 import backend.core.VoiceSynthesizer
