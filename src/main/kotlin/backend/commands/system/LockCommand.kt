@@ -30,6 +30,7 @@ class LockCommand : VoiceCommand() {
                     VoiceAssistant.locked = true
                     VoiceRecognizer.currentCommand = null
                     VoiceRecognizer.activated = false
+                    state = 0
                 }else {
                     VoiceSynthesizer.speakText("Zugriff verweigert, falscher PIN Code. Bitte wiederholen sie ihren pin code.")
                     SoundManager.playSound("start")

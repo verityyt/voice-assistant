@@ -27,6 +27,7 @@ class SetupTask : VoiceCommand() {
                     VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
                     VoiceRecognizer.currentCommand = null
                     VoiceRecognizer.activated = false
+                    state = 0
                 } else {
                     VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, bitte wiederholen sie ihre Antwort")
                     SoundManager.playSound("start")
@@ -43,6 +44,8 @@ class SetupTask : VoiceCommand() {
                     VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
                     VoiceRecognizer.currentCommand = null
                     VoiceRecognizer.activated = false
+
+                    state = 0
                 } else {
                     VoiceSynthesizer.speakText("Das importieren aus ${input}.json ist fehlgeschlagen, bitte versuchen sie es mit einer anderen Datei")
                     SoundManager.playSound("start")

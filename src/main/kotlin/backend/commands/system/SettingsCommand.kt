@@ -34,6 +34,7 @@ class SettingsCommand : VoiceCommand() {
                 VoiceSynthesizer.speakText("Import erfolgreich, Einstellungen wurden übernommen.")
                 VoiceRecognizer.currentCommand = null
                 VoiceRecognizer.activated = false
+                state = 0
             } else {
                 VoiceSynthesizer.speakText("Das importieren aus ${input}.json ist fehlgeschlagen, bitte versuchen sie es mit einer anderen Datei.")
                 SoundManager.playSound("start")
