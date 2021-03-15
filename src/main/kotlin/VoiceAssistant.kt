@@ -30,7 +30,8 @@ object VoiceAssistant {
         ImBackCommand(),
         IntroduceCommand(),
         NoCommand(),
-        ShutdownCommand()
+        ShutdownCommand(),
+        StopCommand()
     )
 
     @JvmStatic
