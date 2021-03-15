@@ -83,21 +83,4 @@ object Jarvis {
         (VoiceRecognizer.currentCommand as SetupTask).perform("")
     }
 
-    /*private fun importSettings() {
-        VoiceSynthesizer.speakText("Aus welcher Datei soll ich die Einstellungen importieren")
-        val answer = VoiceRecognition.startReactiveRecognition()
-
-        VoiceSynthesizer.speakText("Importiere Einstellungen aus ${answer}.json")
-        val import = Configuration.import(answer.toLowerCase())
-
-        if (import) {
-            VoiceSynthesizer.speakText("Import erfolgreich, Einstellungen wurden übernommen")
-            Configuration.setOptionsValue("setup", "false")
-        } else {
-            VoiceSynthesizer.speakText("Das importieren aus ${answer}.json ist fehlgeschlagen, bitte versuchen sie es mit einer anderen Datei")
-            importSettings()
-        }
-
-    }*/
-
 }
