@@ -6,14 +6,14 @@ object VoiceSynthesizer {
 
     fun speakText(text: String) {
 
-        Logger.debug("Speaking now => '$text'",this.javaClass.name)
-
         val shutdown = text.endsWith("[shutdown]")
         val enterText = if(shutdown) {
             text.replace("[shutdown]","")
         }else {
             text
         }
+
+        Logger.debug("Speaking now => '$enterText'",this.javaClass.name)
 
         val textarea = VoiceAssistant.driver.findElement(By.id("voicetext"))
         textarea.clear()
