@@ -1,7 +1,6 @@
 package backend.commands
 
 import backend.core.VoiceCommand
-import backend.core.VoiceRecognition
 import backend.core.VoiceSynthesizer
 
 class ByeCommand : VoiceCommand() {

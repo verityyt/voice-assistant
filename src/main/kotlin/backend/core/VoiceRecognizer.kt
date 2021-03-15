@@ -7,7 +7,7 @@ import java.net.ServerSocket
 import java.net.Socket
 import kotlin.system.exitProcess
 
-object VoiceRecognition {
+object VoiceRecognizer {
 
     private lateinit var pythonThread: Process
     private lateinit var socket: Socket
