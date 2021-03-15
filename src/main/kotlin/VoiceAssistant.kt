@@ -7,10 +7,8 @@ import backend.commands.tasks.SetupTask
 import backend.commands.weather.TemperatureCommand
 import backend.commands.weather.WeatherCommand
 import backend.core.*
-import org.openqa.selenium.By
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
-import org.openqa.selenium.support.ui.Select
 import kotlin.system.exitProcess
 
 object VoiceAssistant {
@@ -65,20 +63,35 @@ object VoiceAssistant {
         System.setProperty("webdriver.chrome.driver", "files/chromedriver.exe")
         driver = ChromeDriver(options)
 
-        driver.get("https://ttsmp3.com/text-to-speech/German/")
-        val voice = Select(driver.findElement(By.id("sprachwahl")))
+        driver.get("https://www.naturalreaders.com/online/")
 
-        if(this.voice == "female") {
-            voice.selectByValue("Marlene")
-        }else {
-            voice.selectByValue("Hans")
+        val speaker = driver.findElementByClassName("btn-speaker")
+        speaker.click()
+
+        Thread.sleep(2000)
+
+        if (this.voice == "female") {
+            driver.findElementByXPath("//div[text()='German - Claudia']").click()
+        } else {
+            driver.findElementByXPath("//div[text()='German - Klaus']").click()
+
+            val speed = driver.findElementByClassName("btn-speed")
+            speed.click()
+
+            val items = driver.findElementsByClassName("speed-menu-item")
+
+            for(item in items) {
+                if(item.text == "0") {
+                    item.click()
+                }
+            }
         }
 
         VoiceRecognizer.startup()
 
-        if(Configuration.getFromOptions("setup") == "true") {
+        if (Configuration.getFromOptions("setup") == "true") {
             startSetup()
-        }else {
+        } else {
             VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
         }
 
