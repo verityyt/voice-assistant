@@ -19,12 +19,14 @@ object Configuration {
             val json = JSONObject()
 
             json["name"] = "J.A.R.V.I.S."
-            json["keyword"] = "hey jarvis"
+            json["keyword"] = "jarvis"
             json["weather.com"] =
                 "https://weather.com/de-DE/wetter/heute/l/5ca23443513a0fdc1d37ae2ffaf5586162c6fe592a66acc9320a0d0536be1bb9"
             json["email"] = "jarvis@verity-network.de"
             json["pin"] = "0000"
             json["voice"] = "male"
+            json["alias"] = "Just A Rather Very Intelligent System"
+            json["username"] = "user"
 
             file.writeText(json.toJSONString())
 
@@ -78,6 +80,8 @@ object Configuration {
             VoiceAssistant.email = json["email"].toString()
             VoiceAssistant.pin = json["pin"].toString()
             VoiceAssistant.voice = json["voice"].toString()
+            VoiceAssistant.alias = json["alias"].toString()
+            VoiceAssistant.username = json["username"].toString()
 
             setOptionsValue("filename", name)
 

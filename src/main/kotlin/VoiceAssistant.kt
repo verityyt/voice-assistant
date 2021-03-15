@@ -24,6 +24,8 @@ object VoiceAssistant {
     var name = ""
     var pin = ""
     var voice = ""
+    var alias = ""
+    var username = ""
 
     var locked = false
 
