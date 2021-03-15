@@ -1,4 +1,4 @@
-package backend.features
+package backend.utils
 
 import org.jsoup.Jsoup
 

@@ -1,4 +1,4 @@
-package backend.features
+package backend.utils
 
 import secrets.EMAIL_ADDRESS
 import secrets.EMAIL_PASSWORD
