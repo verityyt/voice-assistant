@@ -5,6 +5,8 @@ import backend.core.VoiceSynthesizer
 
 class ShutdownCommand : VoiceCommand() {
 
+    override val needsReaction: Boolean = false
+
     override val keywords: List<String> = listOf("shutdown")
 
     val byes = listOf("Bis bald", "Wir hören uns")

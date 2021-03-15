@@ -29,7 +29,8 @@ object VoiceAssistant {
         GreetingCommand(),
         ImBackCommand(),
         IntroduceCommand(),
-        NoCommand()
+        NoCommand(),
+        ShutdownCommand()
     )
 
     @JvmStatic
