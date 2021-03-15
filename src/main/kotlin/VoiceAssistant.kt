@@ -31,7 +31,8 @@ object VoiceAssistant {
         IntroduceCommand(),
         NoCommand(),
         ShutdownCommand(),
-        StopCommand()
+        StopCommand(),
+        TimeCommand()
     )
 
     @JvmStatic
