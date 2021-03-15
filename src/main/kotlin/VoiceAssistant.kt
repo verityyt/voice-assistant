@@ -1,6 +1,8 @@
 import backend.commands.*
 import backend.commands.DateCommand
 import backend.commands.tasks.SetupTask
+import backend.commands.weather.TemperatureCommand
+import backend.commands.weather.WeatherCommand
 import backend.core.*
 import org.openqa.selenium.By
 import org.openqa.selenium.chrome.ChromeDriver
@@ -32,7 +34,9 @@ object VoiceAssistant {
         NoCommand(),
         ShutdownCommand(),
         StopCommand(),
-        TimeCommand()
+        TimeCommand(),
+        WeatherCommand(),
+        TemperatureCommand()
     )
 
     @JvmStatic
