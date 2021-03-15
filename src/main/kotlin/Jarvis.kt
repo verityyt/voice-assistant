@@ -1,4 +1,5 @@
 import backend.commands.*
+import backend.commands.tasks.DateCommand
 import backend.commands.tasks.SetupTask
 import backend.core.*
 import org.openqa.selenium.By
@@ -20,22 +21,10 @@ object Jarvis {
 
     var locked = false
 
-    val commands = listOf<VoiceCommand>(
+    val commands = listOf(
         SetupTask(),
-        ByeCommand()
-        /*IntroduceCommand(),
-        GreetingCommand(),
-        ImBackCommand(),
-        StopCommand(),
-        ShutdownCommand(),
-        NoCommand(),
-        WeatherCommand(),
-        TemperatureCommand(),
-        TimeCommand(),
-        DateCommand(),
-        SettingsCommand(),
-        SearchCommand(),
-        LockCommand()*/
+        ByeCommand(),
+        DateCommand()
     )
 
     @JvmStatic
