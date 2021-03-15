@@ -1,7 +1,11 @@
 # Project exclude paths
 /.gradle/
+/src/main/kotlin/secrets/
+
+/files/chromedriver.exe
+
 /files/default.json
 /files/options.json
-/files/home.json
-/src/main/kotlin/secrets/
-/files/chromedriver.exe
+
+/files/jarvis.json
+/files/friday.json
