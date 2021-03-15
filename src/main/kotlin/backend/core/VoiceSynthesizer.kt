@@ -15,11 +15,11 @@ object VoiceSynthesizer {
             text
         }
 
-        val textarea = Jarvis.driver.findElement(By.id("voicetext"))
+        val textarea = VoiceAssistant.driver.findElement(By.id("voicetext"))
         textarea.clear()
         textarea.sendKeys(enterText)
 
-        val playSound = Jarvis.driver.findElement(By.id("vorlesenbutton"))
+        val playSound = VoiceAssistant.driver.findElement(By.id("vorlesenbutton"))
         playSound.click()
 
         var playTime = 0L
@@ -31,7 +31,7 @@ object VoiceSynthesizer {
         Thread.sleep(playTime)
 
         if(shutdown) {
-            Jarvis.shutdown()
+            VoiceAssistant.shutdown()
         }
 
     }

@@ -40,7 +40,7 @@ object EmailClient {
     ): Message {
 
         val message = MimeMessage(session)
-        message.setFrom(InternetAddress(account, Jarvis.name))
+        message.setFrom(InternetAddress(account, VoiceAssistant.name))
         message.setRecipient(Message.RecipientType.TO, InternetAddress(recipient))
         message.subject = subject
         message.setContent(content, "text/html")

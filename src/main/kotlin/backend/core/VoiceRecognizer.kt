@@ -1,6 +1,5 @@
 package backend.core
 
-import sun.rmi.runtime.Log
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.ServerSocket
@@ -102,7 +101,7 @@ object VoiceRecognizer {
 
                 var found = false
 
-                for (command in Jarvis.commands) {
+                for (command in VoiceAssistant.commands) {
                     if (command.keywords.contains(text.toLowerCase())) {
                         println("Called ${command.javaClass.name}")
 

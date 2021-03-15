@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.support.ui.Select
 import kotlin.system.exitProcess
 
-object Jarvis {
+object VoiceAssistant {
 
     @JvmStatic
     lateinit var driver: ChromeDriver

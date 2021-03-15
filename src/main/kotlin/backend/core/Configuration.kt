@@ -71,11 +71,11 @@ object Configuration {
         if(file.exists()) {
             val json = JSONParser().parse(file.readText()) as JSONObject
 
-            Jarvis.name = json["name"].toString()
-            Jarvis.keyword = json["keyword"].toString()
-            Jarvis.weatherUrl = json["weather.com"].toString().replace("\\","")
-            Jarvis.email = json["email"].toString()
-            Jarvis.pin = json["pin"].toString()
+            VoiceAssistant.name = json["name"].toString()
+            VoiceAssistant.keyword = json["keyword"].toString()
+            VoiceAssistant.weatherUrl = json["weather.com"].toString().replace("\\","")
+            VoiceAssistant.email = json["email"].toString()
+            VoiceAssistant.pin = json["pin"].toString()
 
             setOptionsValue("filename", name)
 
