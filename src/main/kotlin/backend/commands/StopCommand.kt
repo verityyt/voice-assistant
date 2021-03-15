@@ -10,5 +10,4 @@ class StopCommand : VoiceCommand() {
 
     override fun perform(input: String) { }
 
-
 }
