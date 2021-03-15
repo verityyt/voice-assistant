@@ -23,7 +23,7 @@ class DateCommand : VoiceCommand() {
         val parts = date.split(".")
 
         VoiceSynthesizer.speakText("Heute ist ${parts[0]} der ${parts[1]} ${parts[2]} ${parts[3]}")
-        VoiceRecognition.startRecognition()
+        /*/*VoiceRecognition.startRecognition()*/*/
     }
 
 }

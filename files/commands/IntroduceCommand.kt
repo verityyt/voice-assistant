@@ -10,7 +10,7 @@ class IntroduceCommand : VoiceCommand() {
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Hallo, ich bin Jarvis der neue virtuelle Assistent.")
-        VoiceRecognition.startRecognition()
+        /*VoiceRecognition.startRecognition()*/
     }
 
 }

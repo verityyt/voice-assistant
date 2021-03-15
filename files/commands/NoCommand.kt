@@ -10,7 +10,7 @@ class NoCommand : VoiceCommand() {
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Ok sir, ich werde mich bereit halten.")
-        VoiceRecognition.startRecognition()
+        /*VoiceRecognition.startRecognition()*/
     }
 
 }

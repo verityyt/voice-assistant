@@ -29,7 +29,7 @@ class SettingsCommand : VoiceCommand() {
             VoiceSynthesizer.speakText("Entschludigen sie aber ich konnte sie nicht verstehen. Bitte wiederholen sie Befehl.")
         }*/
 
-        VoiceRecognition.startRecognition()
+        /*VoiceRecognition.startRecognition()*/
     }
 
 }

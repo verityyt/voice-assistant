@@ -15,10 +15,10 @@ class LockCommand : VoiceCommand() {
         if(answer == Jarvis.pin) {
             VoiceSynthesizer.speakText("Korrekter PIN Code, gesperrt")
             Jarvis.locked = true
-            VoiceRecognition.startRecognition()
+            /*VoiceRecognition.startRecognition()*/
         }else {
             VoiceSynthesizer.speakText("Zugriff verweigert, falscher PIN Code")
-            VoiceRecognition.startRecognition()
+            /*VoiceRecognition.startRecognition()*/
         }*/
 
     }

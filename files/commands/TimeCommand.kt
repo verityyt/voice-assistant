@@ -16,7 +16,7 @@ class TimeCommand : VoiceCommand() {
         val parts = time.split(":")
 
         VoiceSynthesizer.speakText("Es ist ${parts[0]} uhr ${parts[1]}")
-        VoiceRecognition.startRecognition()
+        /*VoiceRecognition.startRecognition()*/
     }
 
 }

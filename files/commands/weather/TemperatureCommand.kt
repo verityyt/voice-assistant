@@ -11,7 +11,7 @@ class TemperatureCommand : VoiceCommand() {
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Draußen sind es gerade ${Weather().getTemperature()} grad celsius.")
-        VoiceRecognition.startRecognition()
+        /*VoiceRecognition.startRecognition()*/
     }
 
 
