@@ -18,7 +18,18 @@ class TimeCommand : VoiceCommand() {
         val time = formatter.format(Date())
         val parts = time.split(":")
 
-        VoiceSynthesizer.speakText("Es ist ${parts[0]} uhr ${parts[1]}")
+        var hours = parts[0]
+        var minutes = parts[1]
+
+        if(minutes.startsWith("0")) {
+            minutes = minutes.replaceFirst("0","")
+        }
+
+        if(hours.startsWith("0")) {
+            hours = hours.replaceFirst("0","")
+        }
+
+        VoiceSynthesizer.speakText("Es ist $hours uhr $minutes")
     }
 
 }
