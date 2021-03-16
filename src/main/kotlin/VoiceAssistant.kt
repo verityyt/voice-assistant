@@ -81,19 +81,19 @@ object VoiceAssistant {
 
             val items = driver.findElementsByClassName("speed-menu-item")
 
-            for(item in items) {
-                if(item.text == "0") {
+            for (item in items) {
+                if (item.text == "0") {
                     item.click()
                 }
             }
         }
 
-        VoiceRecognizer.startup()
-
         if (Configuration.getFromOptions("setup") == "true") {
+            VoiceRecognizer.startup()
             startSetup()
         } else {
             VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
+            VoiceRecognizer.startup()
         }
 
     }
@@ -106,9 +106,27 @@ object VoiceAssistant {
 
     private fun startSetup() {
         println("Starting setup...")
-        VoiceRecognizer.activated = true
-        VoiceRecognizer.currentCommand = SetupTask()
-        (VoiceRecognizer.currentCommand as SetupTask).perform("")
+
+        if (Configuration.getFromOptions("filename") != "default") {
+
+            val input = Configuration.getFromOptions("filename")
+            VoiceSynthesizer.speakText("Importiere Einstellungen aus ${input}.json")
+            val import = Configuration.import(input)
+
+            if (import) {
+                VoiceSynthesizer.speakText("Import erfolgreich, Einstellungen wurden übernommen")
+                Configuration.setOptionsValue("setup", "false")
+
+                VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
+            } else {
+                VoiceSynthesizer.speakText("Das importieren aus ${input}.json ist fehlgeschlagen, bitte versuchen sie es mit dem befehl \"Importiere neue einstellungen\" erneut")
+            }
+
+        } else {
+            VoiceRecognizer.activated = true
+            VoiceRecognizer.currentCommand = SetupTask()
+            (VoiceRecognizer.currentCommand as SetupTask).perform("")
+        }
     }
 
 }
