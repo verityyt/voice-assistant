@@ -11,6 +11,8 @@ import kotlin.system.exitProcess
 
 object VoiceRecognizer {
 
+    private val offers = listOf("wie kann ich ihnen helfen?", "kann ich irgendetwas für sie tun?", "kann ich ihnen irgendwie behilflich sein?", "ja, sir?", "ja?", "was gibts?")
+
     private lateinit var pythonThread: Process
     private lateinit var socket: Socket
     private var currentInput = ""
@@ -162,10 +164,7 @@ object VoiceRecognizer {
         } else {
             Logger.info("Detected keyword => Listening now", this.javaClass.name)
 
-            if (Random.nextBoolean()) {
-                VoiceSynthesizer.speakText("Ja, sir?")
-            }
-
+            VoiceSynthesizer.speakText(offers.random())
 
             SoundManager.playSound("start")
             activated = true
