@@ -18,7 +18,7 @@ class JokeCommand : VoiceCommand() {
 
             for(part in parts) {
                 VoiceSynthesizer.speakText(part)
-                Thread.sleep(1500)
+                Thread.sleep(1000)
             }
 
         }else {
