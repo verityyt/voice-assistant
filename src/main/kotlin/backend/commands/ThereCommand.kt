@@ -12,6 +12,7 @@ class ThereCommand : VoiceCommand() {
         "natürlich",
         "natürlich, sir",
         "ja",
+        "ja, sir",
         "ich bin immer für sie da",
         "ich bin immer für sie da, sir"
     )
