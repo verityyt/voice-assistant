@@ -174,86 +174,120 @@ object VoiceRecognizer {
             cont = true
         } else {
 
-            if (keyword.toLowerCase().contains("jarvis")) {
-                when {
-                    input.contains("jarvis") -> {
-                        val newInput = input.split("jarvis ").toMutableList()
-                        newInput.remove(newInput[0])
-
-                        var found = false
-
-                        for (command in VoiceAssistant.commands) {
-                            if (command.keywords.contains(newInput.joinToString(""))) {
-                                Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
-                                command.perform(newInput.joinToString(""))
-                                currentCommand = command
-                                found = true
-                            }
-                        }
-
-                        if (!found) {
-                            VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit ${newInput.joinToString("")} meinen")
-                        }
-                    }
-                    input.contains("davis") -> {
-                        val newInput = input.split("davis ").toMutableList()
-                        newInput.remove(newInput[0])
-
-                        var found = false
-
-                        for (command in VoiceAssistant.commands) {
-                            if (command.keywords.contains(newInput.joinToString(""))) {
-                                Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
-                                command.perform(newInput.joinToString(""))
-                                currentCommand = command
-                                found = true
-                            }
-                        }
-
-                        if (!found) {
-                            VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit ${newInput.joinToString("")} meinen")
-                        }
-                    }
-                    input.contains("tarvis") -> {
-                        val newInput = input.split("tarvis ").toMutableList()
-                        newInput.remove(newInput[0])
-
-                        var found = false
-
-                        for (command in VoiceAssistant.commands) {
-                            if (command.keywords.contains(newInput.joinToString(""))) {
-                                Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
-                                command.perform(newInput.joinToString(""))
-                                currentCommand = command
-                                found = true
-                            }
-                        }
-
-                        if (!found) {
-                            VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit ${newInput.joinToString("")} meinen")
-                        }
-                    }
-                    else -> {
-                        cont = true
-                    }
+            if (VoiceAssistant.locked) {
+                if (unlockState == 0) {
+                    VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
+                    SoundManager.playSound("start")
+                    activated = true
+                    unlockState = 1
                 }
             }else {
-                val newInput = input.split("$keyword ").toMutableList()
-                newInput.remove(newInput[0])
 
-                var found = false
+                if (keyword.toLowerCase().contains("jarvis")) {
+                    when {
+                        input.contains("jarvis") -> {
+                            val newInput = input.split("jarvis ").toMutableList()
+                            newInput.remove(newInput[0])
 
-                for (command in VoiceAssistant.commands) {
-                    if (command.keywords.contains(newInput.joinToString(""))) {
-                        Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
-                        command.perform(newInput.joinToString(""))
-                        currentCommand = command
-                        found = true
+                            var found = false
+
+                            for (command in VoiceAssistant.commands) {
+                                if (command.keywords.contains(newInput.joinToString(""))) {
+                                    Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
+                                    command.perform(newInput.joinToString(""))
+                                    currentCommand = command
+                                    found = true
+                                }
+                            }
+
+                            if (!found) {
+                                VoiceSynthesizer.speakText(
+                                    "Es tut mir leid aber ich weiß nicht was sie mit ${
+                                        newInput.joinToString(
+                                            ""
+                                        )
+                                    } meinen"
+                                )
+                            }
+                        }
+                        input.contains("davis") -> {
+                            val newInput = input.split("davis ").toMutableList()
+                            newInput.remove(newInput[0])
+
+                            var found = false
+
+                            for (command in VoiceAssistant.commands) {
+                                if (command.keywords.contains(newInput.joinToString(""))) {
+                                    Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
+                                    command.perform(newInput.joinToString(""))
+                                    currentCommand = command
+                                    found = true
+                                }
+                            }
+
+                            if (!found) {
+                                VoiceSynthesizer.speakText(
+                                    "Es tut mir leid aber ich weiß nicht was sie mit ${
+                                        newInput.joinToString(
+                                            ""
+                                        )
+                                    } meinen"
+                                )
+                            }
+                        }
+                        input.contains("tarvis") -> {
+                            val newInput = input.split("tarvis ").toMutableList()
+                            newInput.remove(newInput[0])
+
+                            var found = false
+
+                            for (command in VoiceAssistant.commands) {
+                                if (command.keywords.contains(newInput.joinToString(""))) {
+                                    Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
+                                    command.perform(newInput.joinToString(""))
+                                    currentCommand = command
+                                    found = true
+                                }
+                            }
+
+                            if (!found) {
+                                VoiceSynthesizer.speakText(
+                                    "Es tut mir leid aber ich weiß nicht was sie mit ${
+                                        newInput.joinToString(
+                                            ""
+                                        )
+                                    } meinen"
+                                )
+                            }
+                        }
+                        else -> {
+                            cont = true
+                        }
                     }
-                }
+                } else {
+                    val newInput = input.split("$keyword ").toMutableList()
+                    newInput.remove(newInput[0])
 
-                if (!found) {
-                    VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit ${newInput.joinToString("")} meinen")
+                    var found = false
+
+                    for (command in VoiceAssistant.commands) {
+                        if (command.keywords.contains(newInput.joinToString(""))) {
+                            Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
+                            command.perform(newInput.joinToString(""))
+                            currentCommand = command
+                            found = true
+                        }
+                    }
+
+                    if (!found) {
+                        VoiceSynthesizer.speakText(
+                            "Es tut mir leid aber ich weiß nicht was sie mit ${
+                                newInput.joinToString(
+                                    ""
+                                )
+                            } meinen"
+                        )
+                    }
                 }
             }
 
