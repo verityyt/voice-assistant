@@ -14,8 +14,7 @@ class IntroduceCommand : VoiceCommand() {
 
     private val sentences =
         listOf(
-            "Gestatten Sie mir, mich vorzustellen. Ich bin %NAME% eine virtuell künstliche Intelligenz und ich bin hier, um Ihnen so gut ich kann zu helfen. 24 Stunden am Tag, 7 Tage die Woche.",
-            "Hallo, ich bin %NAME%, das steht für %ALIAS%, der neue virtuelle Assistent von %USER%."
+            "Gestatten Sie mir, mich vorzustellen. Ich bin %NAME% eine virtuell künstliche Intelligenz und ich bin hier, um Ihnen so gut ich kann zu helfen. 24 Stunden am Tag, 7 Tage die Woche."
         )
 
     override fun perform(input: String) {
