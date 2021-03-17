@@ -44,7 +44,8 @@ object VoiceAssistant {
         LockCommand(),
         SettingsCommand(),
         SearchCommand(),
-        JokeCommand()
+        JokeCommand(),
+        ThereCommand()
     )
 
     @JvmStatic
