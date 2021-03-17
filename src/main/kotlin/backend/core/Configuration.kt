@@ -40,6 +40,7 @@ object Configuration {
 
             json["filename"] = "default"
             json["setup"] = "true"
+            json["vlc"] = ""
             options.writeText(json.toJSONString())
 
             println("[Configuration] Options Configuration created!")
