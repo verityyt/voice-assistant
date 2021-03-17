@@ -1,5 +1,6 @@
 package backend.core
 
+import hud.HUD
 import java.io.File
 import javax.sound.sampled.AudioSystem
 import javax.sound.sampled.AudioInputStream
@@ -11,6 +12,11 @@ object SoundManager {
         val inputStream: AudioInputStream = AudioSystem.getAudioInputStream(File("files/sounds/$name.wav"))
         clip.open(inputStream)
         clip.start()
+
+        if(name == "start") {
+            HUD.play("waiting")
+            HUD.show()
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import backend.commands.tasks.SetupTask
 import backend.commands.weather.TemperatureCommand
 import backend.commands.weather.WeatherCommand
 import backend.core.*
+import hud.HUD
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import kotlin.system.exitProcess
@@ -87,6 +88,9 @@ object VoiceAssistant {
                 }
             }
         }
+
+        HUD.startup()
+        HUD.hide()
 
         if (Configuration.getFromOptions("setup") == "true") {
             VoiceRecognizer.startup()

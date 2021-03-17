@@ -1,7 +1,9 @@
 package backend.core
 
+import hud.HUD
 import org.openqa.selenium.By
-import java.util.ArrayList
+import sun.net.www.http.Hurryable
+import java.util.*
 
 object VoiceSynthesizer {
 
@@ -25,20 +27,29 @@ object VoiceSynthesizer {
         val playButton = VoiceAssistant.driver.findElement(By.className("btn-play"))
         playButton.click()
 
-        Thread.sleep(2000)
+
+        HUD.play("speaking")
 
         while (true) {
-            val test = VoiceAssistant.driver.findElements(By.className("btn-play")).size
+            val playingButton = VoiceAssistant.driver.findElements(By.className("btn-play")).size
 
-            if (test == 1) {
+            if (playingButton == 1) {
                 break
             }
 
+            val textPreview = VoiceAssistant.driver.findElement(By.id("ccText"))
+            if (textPreview.findElements(By.id("cc-w")).size > 0) {
+                if (!HUD.isShown) {
+                    HUD.show()
+                }
+            }
         }
 
         if (shutdown) {
             VoiceAssistant.shutdown()
         }
+
+        HUD.hide()
 
     }
 
