@@ -1,12 +1,11 @@
 package backend.core
 
 import backend.commands.StopCommand
+import hud.HUD
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.ServerSocket
 import java.net.Socket
-import kotlin.math.truncate
-import kotlin.random.Random
 import kotlin.system.exitProcess
 
 object VoiceRecognizer {
@@ -100,6 +99,8 @@ object VoiceRecognizer {
                         currentCommand!!.state = 0
                         currentCommand = null
                         activated = false
+
+                        HUD.hide()
                     }
                 }
             }

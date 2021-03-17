@@ -2,6 +2,7 @@ package backend.commands
 
 import backend.core.VoiceCommand
 import backend.core.VoiceSynthesizer
+import hud.HUD
 
 class NoCommand : VoiceCommand() {
 
@@ -13,6 +14,7 @@ class NoCommand : VoiceCommand() {
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText("Ok sir, ich werde mich bereit halten.")
+        HUD.hide()
     }
 
 }

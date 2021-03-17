@@ -1,6 +1,7 @@
 package backend.commands
 
 import backend.core.VoiceCommand
+import hud.HUD
 
 class StopCommand : VoiceCommand() {
 
@@ -10,6 +11,8 @@ class StopCommand : VoiceCommand() {
 
     override var state: Int = 0
 
-    override fun perform(input: String) { }
+    override fun perform(input: String) {
+        HUD.hide()
+    }
 
 }
