@@ -53,6 +53,8 @@ object VoiceAssistant {
     @JvmStatic
     fun main(args: Array<String>) {
 
+        printIntro()
+
         Logger.info("Starting up voice assistant...", this.javaClass.name)
 
         Configuration.create()
@@ -134,6 +136,27 @@ object VoiceAssistant {
             VoiceRecognizer.currentCommand = SetupTask()
             (VoiceRecognizer.currentCommand as SetupTask).perform("")
         }
+    }
+
+    private fun printIntro() {
+
+        println(" __      __ ______  _____   _____  _______ __     __")
+        println(" \\ \\    / /|  ____||  __ \\ |_   _||__   __|\\ \\   / /")
+        println("  \\ \\  / / | |__   | |__) |  | |     | |    \\ \\_/ / ")
+        println("   \\ \\/ /  |  __|  |  _  /   | |     | |     \\   /  ")
+        println("    \\  /   | |____ | | \\ \\  _| |_    | |      | |   ")
+        println("     \\/    |______||_|  \\_\\|_____|   |_|      |_|   ")
+        println("")
+        println("Voice Assistant - build and developed by verity")
+        println("   GitHub: https://github.com/verityyt")
+        println("   Website: http://verity-network.de")
+        println("   StackOverflow: https://stackoverflow.com/users/13189807/verity?tab=profile")
+        println("   Instagram: https://www.instagram.com/verity_yt/")
+        println("   Twitter: https://twitter.com/verity_yt_/")
+        println("")
+        println("-----------------------------------------------------------------------------------")
+        println("")
+
     }
 
 }
