@@ -28,6 +28,8 @@ object VoiceAssistant {
 
     var locked = false
 
+    private val startupLines = listOf("Alle Systeme startklar. Ich bin wieder online", "Guten Tag, sir. Ich bin wieder online", "Guten Tag, sir")
+
     val commands = listOf(
         SetupTask(),
         DateCommand(),
@@ -97,7 +99,7 @@ object VoiceAssistant {
             VoiceRecognizer.startup()
             startSetup()
         } else {
-            VoiceSynthesizer.speakText("Alle Systeme startklar. Ich bin wieder online.")
+            VoiceSynthesizer.speakText(startupLines.random())
             VoiceRecognizer.startup()
         }
 
