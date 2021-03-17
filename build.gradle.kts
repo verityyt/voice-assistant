@@ -23,4 +23,8 @@ dependencies {
     implementation("org.jsoup:jsoup:1.8.3")
     implementation("com.github.jkcclemens:khttp:-SNAPSHOT")
     implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
+    implementation("uk.co.caprica:vlcj:3.10.1")
+    implementation("org.slf4j:slf4j-api:1.7.30")
+    implementation("ch.qos.logback:logback-classic:1.0.13")
+    implementation("net.java.dev.jna:jna:4.2.0")
 }
