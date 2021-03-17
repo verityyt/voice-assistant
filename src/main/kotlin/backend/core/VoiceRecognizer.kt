@@ -6,6 +6,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.ServerSocket
 import java.net.Socket
+import kotlin.Exception
 import kotlin.system.exitProcess
 
 object VoiceRecognizer {
@@ -62,12 +63,13 @@ object VoiceRecognizer {
                         currentInput = "No input!"
                     }
                     else -> {
-                        if (msg.startsWith("RECOGNIZED:")) {
-                            msg = msg.replace("RECOGNIZED:", "")
-                            currentInput = msg
-                        } else {
-                            println("'$msg'")
-                        }
+                        try {
+                            if (msg.startsWith("RECOGNIZED:")) {
+                                msg = msg.replace("RECOGNIZED:", "")
+                                currentInput = msg
+                            }
+                        }catch(e: Exception) { }
+
                     }
                 }
             }
