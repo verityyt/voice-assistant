@@ -69,8 +69,8 @@ object HUD {
 
         /* VIDEO */
 
-        NativeLibrary.addSearchPath("libvlc", "E:\\Program Files\\VLC")
-        System.setProperty("VLC_PLUGIN_PATH", Configuration.getFromOptions("vlc"))
+        NativeLibrary.addSearchPath("libvlc", Configuration.getFromOptions("vlc"))
+        System.setProperty("VLC_PLUGIN_PATH", "${Configuration.getFromOptions(" vlc ")}\\plugins")
 
         val rootLogger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME) as Logger
         rootLogger.level = Level.toLevel("off")
