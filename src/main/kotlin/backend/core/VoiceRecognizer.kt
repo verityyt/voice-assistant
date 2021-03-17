@@ -10,7 +10,14 @@ import kotlin.system.exitProcess
 
 object VoiceRecognizer {
 
-    private val offers = listOf("wie kann ich ihnen helfen?", "kann ich irgendetwas für sie tun?", "kann ich ihnen irgendwie behilflich sein?", "ja, sir?", "ja?", "was gibts?")
+    private val offers = listOf(
+        "wie kann ich ihnen helfen?",
+        "kann ich irgendetwas für sie tun?",
+        "kann ich ihnen irgendwie behilflich sein?",
+        "ja, sir?",
+        "ja?",
+        "was gibts?"
+    )
 
     private lateinit var pythonThread: Process
     private lateinit var socket: Socket
@@ -155,21 +162,119 @@ object VoiceRecognizer {
     }
 
     fun handleKeywordDetection(input: String) {
-        if (VoiceAssistant.locked) {
-            if (unlockState == 0) {
-                VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
+
+        val keyword = VoiceAssistant.keyword
+        var cont = false
+
+        if (input.endsWith(keyword)) {
+            cont = true
+        } else if (keyword.contains(keyword) && (input.endsWith("davis") || input.endsWith("tarvis"))) {
+            cont = true
+        } else {
+
+            if (keyword.toLowerCase().contains("jarvis")) {
+                when {
+                    input.contains("jarvis") -> {
+                        val newInput = input.split("jarvis ").toMutableList()
+                        newInput.remove(newInput[0])
+
+                        var found = false
+
+                        for (command in VoiceAssistant.commands) {
+                            if (command.keywords.contains(newInput.joinToString(""))) {
+                                Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
+                                command.perform(newInput.joinToString(""))
+                                currentCommand = command
+                                found = true
+                            }
+                        }
+
+                        if (!found) {
+                            VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit ${newInput.joinToString("")} meinen")
+                        }
+                    }
+                    input.contains("davis") -> {
+                        val newInput = input.split("davis ").toMutableList()
+                        newInput.remove(newInput[0])
+
+                        var found = false
+
+                        for (command in VoiceAssistant.commands) {
+                            if (command.keywords.contains(newInput.joinToString(""))) {
+                                Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
+                                command.perform(newInput.joinToString(""))
+                                currentCommand = command
+                                found = true
+                            }
+                        }
+
+                        if (!found) {
+                            VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit ${newInput.joinToString("")} meinen")
+                        }
+                    }
+                    input.contains("tarvis") -> {
+                        val newInput = input.split("tarvis ").toMutableList()
+                        newInput.remove(newInput[0])
+
+                        var found = false
+
+                        for (command in VoiceAssistant.commands) {
+                            if (command.keywords.contains(newInput.joinToString(""))) {
+                                Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
+                                command.perform(newInput.joinToString(""))
+                                currentCommand = command
+                                found = true
+                            }
+                        }
+
+                        if (!found) {
+                            VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit ${newInput.joinToString("")} meinen")
+                        }
+                    }
+                    else -> {
+                        cont = true
+                    }
+                }
+            }else {
+                val newInput = input.split("$keyword ").toMutableList()
+                newInput.remove(newInput[0])
+
+                var found = false
+
+                for (command in VoiceAssistant.commands) {
+                    if (command.keywords.contains(newInput.joinToString(""))) {
+                        Logger.info("Calling ${command.javaClass.name}", this.javaClass.name)
+                        command.perform(newInput.joinToString(""))
+                        currentCommand = command
+                        found = true
+                    }
+                }
+
+                if (!found) {
+                    VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit ${newInput.joinToString("")} meinen")
+                }
+            }
+
+        }
+
+        if (cont) {
+            if (VoiceAssistant.locked) {
+                if (unlockState == 0) {
+                    VoiceSynthesizer.speakText("Zugriff verweigert, bitte sagen sie ihren PIN Code")
+                    SoundManager.playSound("start")
+                    activated = true
+                    unlockState = 1
+                }
+            } else {
+                Logger.info("Detected keyword => Listening now", this.javaClass.name)
+
+                VoiceSynthesizer.speakText(offers.random())
+
                 SoundManager.playSound("start")
                 activated = true
-                unlockState = 1
             }
-        } else {
-            Logger.info("Detected keyword => Listening now", this.javaClass.name)
-
-            VoiceSynthesizer.speakText(offers.random())
-
-            SoundManager.playSound("start")
-            activated = true
         }
+
     }
 
 }
