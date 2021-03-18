@@ -1,5 +1,6 @@
 import backend.commands.*
 import backend.commands.DateCommand
+import backend.commands.corona.IncidenceCommand
 import backend.commands.google.SearchCommand
 import backend.commands.system.LockCommand
 import backend.commands.system.SettingsCommand
@@ -48,7 +49,8 @@ object VoiceAssistant {
         SettingsCommand(),
         SearchCommand(),
         JokeCommand(),
-        ThereCommand()
+        ThereCommand(),
+        IncidenceCommand()
     )
 
     @JvmStatic
