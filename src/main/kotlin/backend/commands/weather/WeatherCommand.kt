@@ -2,7 +2,7 @@ package backend.commands.weather
 
 import backend.core.VoiceCommand
 import backend.core.VoiceSynthesizer
-import backend.utils.Weather
+import backend.utils.WeatherFetcher
 
 class WeatherCommand : VoiceCommand() {
 
@@ -13,7 +13,7 @@ class WeatherCommand : VoiceCommand() {
     override var state: Int = 0
 
     override fun perform(input: String) {
-        VoiceSynthesizer.speakText("Draußen sind es gerade ${Weather.getTemperature()} grad celsius und das Wetter ist ${Weather.getWeather()}.")
+        VoiceSynthesizer.speakText("Draußen sind es gerade ${WeatherFetcher.getTemperature()} grad celsius und das Wetter ist ${WeatherFetcher.getWeather()}.")
     }
 
 

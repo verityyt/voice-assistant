@@ -3,7 +3,7 @@ package backend.utils
 import org.openqa.selenium.By
 import java.util.ArrayList
 
-object CoronaIncidence {
+object IncidenceFetcher {
 
     fun getIncidence(): Double {
         VoiceAssistant.driver.executeScript("window.open('','_blank');")

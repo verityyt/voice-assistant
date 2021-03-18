@@ -2,7 +2,7 @@ package backend.commands.corona
 
 import backend.core.VoiceCommand
 import backend.core.VoiceSynthesizer
-import backend.utils.CoronaIncidence
+import backend.utils.IncidenceFetcher
 
 class IncidenceCommand : VoiceCommand() {
 
@@ -22,7 +22,7 @@ class IncidenceCommand : VoiceCommand() {
     )
 
     override fun perform(input: String) {
-        VoiceSynthesizer.speakText("Der aktuelle inzidenz wert liegt bei ${CoronaIncidence.getIncidence().toString().replace(".", ",")} pro 100000 einwohnern in den letzten 7 tagen")
+        VoiceSynthesizer.speakText("Der aktuelle inzidenz wert liegt bei ${IncidenceFetcher.getIncidence().toString().replace(".", ",")} pro 100000 einwohnern in den letzten 7 tagen")
     }
 
     override var state: Int = 0

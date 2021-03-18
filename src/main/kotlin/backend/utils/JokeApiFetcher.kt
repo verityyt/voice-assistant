@@ -3,7 +3,7 @@ package backend.utils
 import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
 
-object JokeApiWrapper {
+object JokeApiFetcher {
     
     private fun requestJoke(): String {
         val respond = khttp.get("https://v2.jokeapi.dev/joke/Any?lang=de")

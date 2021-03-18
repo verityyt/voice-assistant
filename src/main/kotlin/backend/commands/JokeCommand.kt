@@ -2,7 +2,7 @@ package backend.commands
 
 import backend.core.VoiceCommand
 import backend.core.VoiceSynthesizer
-import backend.utils.JokeApiWrapper
+import backend.utils.JokeApiFetcher
 
 class JokeCommand : VoiceCommand() {
 
@@ -11,7 +11,7 @@ class JokeCommand : VoiceCommand() {
     override val keywords: List<String> = listOf("erzähl mir einen witz","kannst du bitte einen witz erzählen", "kannst du einen witz erzählen", "sag was lustiges")
 
     override fun perform(input: String) {
-        val joke = JokeApiWrapper.getJoke()
+        val joke = JokeApiFetcher.getJoke()
 
         if(joke.contains("#5687#")) {
             val parts = joke.split("#5687#")
