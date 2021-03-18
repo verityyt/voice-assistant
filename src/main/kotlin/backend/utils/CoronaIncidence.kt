@@ -5,12 +5,10 @@ import java.util.ArrayList
 
 object CoronaIncidence {
 
-    private val url = "https://www.corona-in-zahlen.de/landkreise/lk%20nürnberger%20land/"
-
     fun getIncidence(): Double {
         VoiceAssistant.driver.executeScript("window.open('','_blank');")
         VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[1])
-        VoiceAssistant.driver.get(url)
+        VoiceAssistant.driver.get(VoiceAssistant.coronaUrl)
 
         val cards = VoiceAssistant.driver.findElementsByClassName("card-body")
 

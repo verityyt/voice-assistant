@@ -22,6 +22,7 @@ object Configuration {
             json["keyword"] = "jarvis"
             json["weather.com"] =
                 "https://weather.com/de-DE/wetter/heute/l/5ca23443513a0fdc1d37ae2ffaf5586162c6fe592a66acc9320a0d0536be1bb9"
+            json["corona-in-zahlen.de"] = "https://www.corona-in-zahlen.de/bundeslaender/berlin/"
             json["email"] = "jarvis@verity-network.de"
             json["pin"] = "0000"
             json["voice"] = "male"
@@ -83,6 +84,7 @@ object Configuration {
             VoiceAssistant.voice = json["voice"].toString()
             VoiceAssistant.alias = json["alias"].toString()
             VoiceAssistant.username = json["username"].toString()
+            VoiceAssistant.coronaUrl = json["corona-in-zahlen.de"].toString()
 
             setOptionsValue("filename", name)
 

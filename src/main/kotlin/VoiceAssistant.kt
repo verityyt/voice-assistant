@@ -19,6 +19,7 @@ object VoiceAssistant {
 
     var keyword = ""
     var weatherUrl = ""
+    var coronaUrl = ""
     var email = ""
     var name = ""
     var pin = ""
