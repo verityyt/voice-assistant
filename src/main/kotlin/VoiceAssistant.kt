@@ -5,6 +5,8 @@ import backend.commands.google.SearchCommand
 import backend.commands.system.LockCommand
 import backend.commands.system.SettingsCommand
 import backend.commands.tasks.SetupTask
+import backend.commands.timetable.TodayCommand
+import backend.commands.timetable.TomorrowCommand
 import backend.commands.weather.TemperatureCommand
 import backend.commands.weather.WeatherCommand
 import backend.core.*
@@ -50,7 +52,9 @@ object VoiceAssistant {
         SearchCommand(),
         JokeCommand(),
         ThereCommand(),
-        IncidenceCommand()
+        IncidenceCommand(),
+        TodayCommand(),
+        TomorrowCommand()
     )
 
     @JvmStatic
