@@ -19,7 +19,7 @@ class TodayCommand : VoiceCommand() {
     override fun perform(input: String) {
         val lessons = TimetableFetcher.getToday()
 
-        var answer = "Heute hast du "
+        var answer = "Heute haben sie "
 
         var cur = 0
 

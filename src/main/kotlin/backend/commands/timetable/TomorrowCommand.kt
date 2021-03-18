@@ -19,7 +19,7 @@ class TomorrowCommand : VoiceCommand() {
     override fun perform(input: String) {
         val lessons = TimetableFetcher.getTomorrow()
 
-        var answer = "Morgen hast du "
+        var answer = "Morgen haben sie "
 
         var cur = 0
 
