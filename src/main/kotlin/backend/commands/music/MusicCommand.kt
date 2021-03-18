@@ -5,6 +5,7 @@ import backend.core.VoiceCommand
 import backend.core.VoiceRecognizer
 import backend.core.VoiceSynthesizer
 import backend.utils.YoutubeFetcher
+import hud.HUD
 import java.awt.Desktop
 import java.net.URI
 
@@ -14,7 +15,7 @@ class MusicCommand : VoiceCommand() {
 
     override val keywords: List<String> = listOf("spiele musik", "spiele musik von youtube")
 
-    private val answers = listOf("Was soll ich spielen", "Welchen song willst du hören", "Was willst du hören")
+    private val answers = listOf("Was soll ich spielen", "Welchen song wollen sie hören", "Was wollen sie hören")
 
     override fun perform(input: String) {
         VoiceSynthesizer.speakText(answers.random())
@@ -29,7 +30,12 @@ class MusicCommand : VoiceCommand() {
     override fun reaction(input: String) {
         when(state) {
             1 -> {
-                Desktop.getDesktop().browse(URI(YoutubeFetcher.getTop(input)))
+                Desktop.getDesktop().browse(URI(YoutubeFetcher.getTop("song $input")))
+
+                VoiceRecognizer.activated = false
+                VoiceRecognizer.currentCommand = null
+                HUD.hide()
+                state = 0
             }
         }
     }
