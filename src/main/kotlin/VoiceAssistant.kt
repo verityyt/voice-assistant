@@ -2,6 +2,7 @@ import backend.commands.*
 import backend.commands.DateCommand
 import backend.commands.corona.IncidenceCommand
 import backend.commands.google.SearchCommand
+import backend.commands.music.MusicCommand
 import backend.commands.system.LockCommand
 import backend.commands.system.SettingsCommand
 import backend.commands.tasks.SetupTask
@@ -54,7 +55,8 @@ object VoiceAssistant {
         ThereCommand(),
         IncidenceCommand(),
         TodayCommand(),
-        TomorrowCommand()
+        TomorrowCommand(),
+        MusicCommand()
     )
 
     @JvmStatic
