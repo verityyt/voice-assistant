@@ -155,7 +155,7 @@ object VoiceRecognizer {
                     }
 
                     if (!found) {
-                        VoiceSynthesizer.speakText("Es tut mir leid aber ich weiß nicht was sie mit $text meinen")
+                        VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
                     }
                 }
             }
@@ -201,13 +201,7 @@ object VoiceRecognizer {
                             }
 
                             if (!found) {
-                                VoiceSynthesizer.speakText(
-                                    "Es tut mir leid aber ich weiß nicht was sie mit ${
-                                        newInput.joinToString(
-                                            ""
-                                        )
-                                    } meinen"
-                                )
+                                VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
                             }
                         }
                         input.contains("davis") -> {
@@ -226,13 +220,7 @@ object VoiceRecognizer {
                             }
 
                             if (!found) {
-                                VoiceSynthesizer.speakText(
-                                    "Es tut mir leid aber ich weiß nicht was sie mit ${
-                                        newInput.joinToString(
-                                            ""
-                                        )
-                                    } meinen"
-                                )
+                                VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
                             }
                         }
                         input.contains("tarvis") -> {
@@ -251,13 +239,7 @@ object VoiceRecognizer {
                             }
 
                             if (!found) {
-                                VoiceSynthesizer.speakText(
-                                    "Es tut mir leid aber ich weiß nicht was sie mit ${
-                                        newInput.joinToString(
-                                            ""
-                                        )
-                                    } meinen"
-                                )
+                                VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
                             }
                         }
                         else -> {
@@ -280,13 +262,7 @@ object VoiceRecognizer {
                     }
 
                     if (!found) {
-                        VoiceSynthesizer.speakText(
-                            "Es tut mir leid aber ich weiß nicht was sie mit ${
-                                newInput.joinToString(
-                                    ""
-                                )
-                            } meinen"
-                        )
+                        VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
                     }
                 }
             }
