@@ -6,6 +6,7 @@ import java.util.ArrayList
 object IncidenceFetcher {
 
     fun getIncidence(): Double {
+        VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[0])
         VoiceAssistant.driver.executeScript("window.open('','_blank');")
         VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[1])
         VoiceAssistant.driver.get(VoiceAssistant.coronaUrl)

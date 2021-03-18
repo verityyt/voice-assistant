@@ -39,6 +39,7 @@ class SearchCommand : VoiceCommand() {
                 val url =
                     "https://www.google.de/search?sxsrf=ALeKk02QNzZQzyJnR97HF-mgnsW_w46hgg%3A1605022285286&source=hp&ei=TbKqX--0Do6-Uoa1p-AJ&q=PLACEHOLDER&oq=PLACEHOLDER&gs_lcp=CgZwc3ktYWIQAzIECCMQJzIHCAAQFBCHAjICCAAyAggAMgIIADIFCAAQywEyAggAMgIIADICCAAyAggAOgUIABCxAzoICAAQsQMQgwE6BwgAELEDEEM6BAgAEEM6BQguELEDUMYDWJkXYIUYaABwAHgBgAGsAogB9QySAQc1LjMuMi4xmAEAoAEBqgEHZ3dzLXdperABAA&sclient=psy-ab&ved=0ahUKEwivj6z5pfjsAhUOnxQKHYbaCZwQ4dUDCAk&uact=5"
 
+                VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[0])
                 VoiceAssistant.driver.executeScript("window.open('','_blank');")
                 VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[1])
                 VoiceAssistant.driver.get(url.replace("PLACEHOLDER", input.replace(" ", "+")))

@@ -10,6 +10,7 @@ object YoutubeFetcher {
     fun getTop(query: String): String {
         val converted = query.replace(" ", "+")
 
+        VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[0])
         VoiceAssistant.driver.executeScript("window.open('','_blank');")
         VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[1])
         VoiceAssistant.driver.get("https://www.youtube.com/results?search_query=$converted")
