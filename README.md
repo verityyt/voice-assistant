@@ -3,14 +3,13 @@
 This voice assistant helps you in your everyday life with useful features like voice controlled google search and more.
 
 ## Voice Commands
-- Google Search
-- Lock
-- Settings
+- Internet Search (from Google via email)
+- Music (from YouTube)
+- Corona Incidence
+- Timetable (for school)  
 - Temperature
 - Weather
-- Bye
-- Date
-- Greeting
+- Joke (tell a toke)
 - etc
 
 ## FAQ
