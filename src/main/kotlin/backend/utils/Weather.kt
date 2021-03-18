@@ -2,7 +2,7 @@ package backend.utils
 
 import org.jsoup.Jsoup
 
-class Weather {
+object Weather {
 
     fun getTemperature(): String {
         val html = Jsoup.parse(khttp.get(VoiceAssistant.weatherUrl).text)

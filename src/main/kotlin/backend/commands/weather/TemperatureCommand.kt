@@ -13,7 +13,7 @@ class TemperatureCommand : VoiceCommand() {
     override var state: Int = 0
 
     override fun perform(input: String) {
-        VoiceSynthesizer.speakText("Draußen sind es gerade ${Weather().getTemperature()} grad celsius.")
+        VoiceSynthesizer.speakText("Draußen sind es gerade ${Weather.getTemperature()} grad celsius.")
     }
 
 
