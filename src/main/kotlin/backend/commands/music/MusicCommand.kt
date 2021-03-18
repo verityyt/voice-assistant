@@ -13,7 +13,7 @@ class MusicCommand : VoiceCommand() {
 
     override val needsReaction: Boolean = true
 
-    override val keywords: List<String> = listOf("spiele musik", "spiele musik von youtube")
+    override val keywords: List<String> = listOf("spiele musik", "spiele musik von youtube", "spiel musik", "spiel musik von youtube")
 
     private val answers = listOf("Was soll ich spielen", "Welchen song wollen sie hören", "Was wollen sie hören")
 
