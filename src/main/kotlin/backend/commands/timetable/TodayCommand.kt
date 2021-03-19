@@ -19,22 +19,26 @@ class TodayCommand : VoiceCommand() {
     override fun perform(input: String) {
         val lessons = TimetableFetcher.getToday()
 
-        var answer = "Heute haben sie "
+        if (lessons != null) {
+            var answer = "Heute haben sie "
 
-        var cur = 0
+            var cur = 0
 
-        for (lesson in lessons) {
-            if (lesson.key != "label") {
-                if(cur != (lessons.size - 2)) {
-                    answer += "${lesson.value}, "
-                }else {
-                    answer += "und ${lesson.value}"
+            for (lesson in lessons) {
+                if (lesson.key != "label") {
+                    if (cur != (lessons.size - 2)) {
+                        answer += "${lesson.value}, "
+                    } else {
+                        answer += "und ${lesson.value}"
+                    }
+                    cur++
                 }
-                cur++
             }
-        }
 
-        VoiceSynthesizer.speakText(answer)
+            VoiceSynthesizer.speakText(answer)
+        } else {
+            VoiceSynthesizer.speakText("Heute haben sie keine schule, sir")
+        }
 
     }
 
