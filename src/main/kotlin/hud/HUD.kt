@@ -56,7 +56,7 @@ object HUD {
                         RenderingHints.VALUE_FRACTIONALMETRICS_ON
                     )
 
-                    g2d.drawImage(ImageIO.read(File("files/images/HUD.png")), screenWidth - 386 - 25, 25, 386, 238, this)
+                    g2d.drawImage(ImageIO.read(File("files/images/HUD.png")), screenWidth - 386 - 25, 10, 386, 238, this)
 
                 }
             }
@@ -86,7 +86,7 @@ object HUD {
         videoWindow.size = Dimension(180, 180)
         videoWindow.isAlwaysOnTop = true
 
-        videoWindow.move(screenWidth - 180 - 130, 50)
+        videoWindow.move(screenWidth - 180 - 130, 35)
 
         playerComp.mediaPlayer.repeat = true
         playerComp.mediaPlayer.scale = 0.2f
