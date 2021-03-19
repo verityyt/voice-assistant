@@ -37,7 +37,7 @@ class TodayCommand : VoiceCommand() {
 
             VoiceSynthesizer.speakText(answer)
         } else {
-            VoiceSynthesizer.speakText("Heute haben sie keine schule, sir")
+            VoiceSynthesizer.speakText("Heute haben sie keine schule sir")
         }
 
     }

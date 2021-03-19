@@ -10,11 +10,11 @@ class ThereCommand : VoiceCommand() {
 
     private val answers = listOf(
         "natürlich",
-        "natürlich, sir",
+        "natürlich sir",
         "ja",
-        "ja, sir",
+        "ja sir",
         "ich bin immer für sie da",
-        "ich bin immer für sie da, sir"
+        "ich bin immer für sie da sir"
     )
 
     override fun perform(input: String) {

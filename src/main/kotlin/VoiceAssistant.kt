@@ -33,7 +33,7 @@ object VoiceAssistant {
 
     var locked = false
 
-    private val startupLines = listOf("Alle Systeme startklar. Ich bin wieder online", "Guten Tag, sir. Ich bin wieder online", "Guten Tag, sir")
+    private val startupLines = listOf("Alle Systeme startklar. Ich bin wieder online", "Guten Tag sir. Ich bin wieder online", "Guten Tag")
 
     val commands = listOf(
         SetupTask(),

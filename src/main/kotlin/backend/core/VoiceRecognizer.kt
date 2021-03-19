@@ -15,7 +15,7 @@ object VoiceRecognizer {
         "wie kann ich ihnen helfen?",
         "kann ich irgendetwas für sie tun?",
         "kann ich ihnen irgendwie behilflich sein?",
-        "ja, sir?",
+        "ja sir?",
         "ja?",
         "was gibts?"
     )
@@ -155,7 +155,7 @@ object VoiceRecognizer {
                     }
 
                     if (!found) {
-                        VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
+                        VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen sir")
                     }
                 }
             }
@@ -201,7 +201,7 @@ object VoiceRecognizer {
                             }
 
                             if (!found) {
-                                VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
+                                VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen sir")
                             }
                         }
                         input.contains("davis") -> {
@@ -220,7 +220,7 @@ object VoiceRecognizer {
                             }
 
                             if (!found) {
-                                VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
+                                VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen sir")
                             }
                         }
                         input.contains("tarvis") -> {
@@ -239,7 +239,7 @@ object VoiceRecognizer {
                             }
 
                             if (!found) {
-                                VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
+                                VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen sir")
                             }
                         }
                         else -> {
@@ -262,7 +262,7 @@ object VoiceRecognizer {
                     }
 
                     if (!found) {
-                        VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen, sir")
+                        VoiceSynthesizer.speakText("Ich konnte sie leider nicht verstehen sir")
                     }
                 }
             }
