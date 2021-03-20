@@ -12,7 +12,8 @@ class SearchCommand : VoiceCommand() {
 
     override val needsReaction: Boolean = true
 
-    override val keywords: List<String> = listOf("google suche", "suche auf google", "starte google suche")
+    override val keywords: List<String> =
+        listOf("google suche", "suche auf google", "starte google suche", "google-suche", "starte google-suche")
 
     private val whatQuestion =
         listOf("Nachwas soll ich suchen", "Was soll ich suchen", "Wonach soll ich suchen", "Was soll ich googlen")
@@ -32,7 +33,7 @@ class SearchCommand : VoiceCommand() {
 
     override fun reaction(input: String) {
 
-        when(state) {
+        when (state) {
             1 -> {
                 searched = input
 
@@ -61,7 +62,7 @@ class SearchCommand : VoiceCommand() {
             }
 
             2 -> {
-                if(input == "ja") {
+                if (input == "ja") {
                     Thread {
                         EmailClient.sendMail(
                             VoiceAssistant.email,
@@ -77,7 +78,7 @@ class SearchCommand : VoiceCommand() {
                     searchResults.clear()
                     searched = ""
                     state = 0
-                }else if(input == "nein") {
+                } else if (input == "nein") {
                     VoiceSynthesizer.speakText("Okay")
                     VoiceRecognizer.currentCommand = null
                     VoiceRecognizer.activated = false
@@ -85,7 +86,7 @@ class SearchCommand : VoiceCommand() {
                     searchResults.clear()
                     searched = ""
                     state = 0
-                }else {
+                } else {
                     VoiceSynthesizer.speakText("Bitte antworten sie mit ja oder nein!")
                     SoundManager.playSound("start")
                 }

@@ -9,7 +9,7 @@ class ImBackCommand : VoiceCommand() {
 
     override val needsReaction: Boolean = false
 
-    override val keywords: List<String> = listOf("ich bin wieder da", "ich bin wieder zurück", "ich bin wieder zuhause")
+    override val keywords: List<String> = listOf("ich bin wieder da", "ich bin wieder zurück", "ich bin zurück", "ich bin wieder zuhause")
 
     val offers = listOf("wie kann ich ihnen helfen?", "kann ich irgendetwas für sie tun?", "kann ich ihnen irgendwie behilflich sein?")
 
