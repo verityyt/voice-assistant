@@ -1,6 +1,6 @@
 package backend.core
 
-import backend.commands.StopCommand
+import backend.commands.aborting.StopCommand
 import hud.HUD
 import java.io.BufferedReader
 import java.io.InputStreamReader

@@ -1,10 +1,15 @@
 import backend.commands.*
-import backend.commands.DateCommand
+import backend.commands.aborting.NoCommand
+import backend.commands.aborting.StopCommand
+import backend.commands.calender.DateCommand
+import backend.commands.calender.TimeCommand
 import backend.commands.corona.IncidenceCommand
 import backend.commands.google.SearchCommand
+import backend.commands.joke.JokeCommand
 import backend.commands.music.MusicCommand
 import backend.commands.system.LockCommand
 import backend.commands.system.SettingsCommand
+import backend.commands.system.ShutdownCommand
 import backend.commands.tasks.SetupTask
 import backend.commands.timetable.TodayCommand
 import backend.commands.timetable.TomorrowCommand
