@@ -21,5 +21,6 @@ Current is only Windows 10 supported.
 - Python 3.9
     + SpeechRecognition module
     + PyAudio module
+    + PyWin32 module
 - VLC
     + libvlc
