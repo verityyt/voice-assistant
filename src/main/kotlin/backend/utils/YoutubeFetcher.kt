@@ -15,6 +15,8 @@ object YoutubeFetcher {
         VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[1])
         VoiceAssistant.driver.get("https://www.youtube.com/results?search_query=$converted")
 
+        Thread.sleep(500)
+
         val renderers = VoiceAssistant.driver.findElementsByClassName("ytd-item-section-renderer")
         var content: WebElement? = null
 
