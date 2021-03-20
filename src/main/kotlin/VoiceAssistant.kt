@@ -6,6 +6,10 @@ import backend.commands.calender.TimeCommand
 import backend.commands.corona.IncidenceCommand
 import backend.commands.google.SearchCommand
 import backend.commands.joke.JokeCommand
+import backend.commands.media.MediaNextCommand
+import backend.commands.media.MediaPauseCommand
+import backend.commands.media.MediaPlayCommand
+import backend.commands.media.MediaPreviousCommand
 import backend.commands.music.MusicCommand
 import backend.commands.system.LockCommand
 import backend.commands.system.SettingsCommand
@@ -38,7 +42,8 @@ object VoiceAssistant {
 
     var locked = false
 
-    private val startupLines = listOf("Alle Systeme startklar. Ich bin wieder online", "Guten Tag sir. Ich bin wieder online", "Guten Tag")
+    private val startupLines =
+        listOf("Alle Systeme startklar. Ich bin wieder online", "Guten Tag sir. Ich bin wieder online", "Guten Tag")
 
     val commands = listOf(
         SetupTask(),
@@ -61,7 +66,11 @@ object VoiceAssistant {
         IncidenceCommand(),
         TodayCommand(),
         TomorrowCommand(),
-        MusicCommand()
+        MusicCommand(),
+        MediaNextCommand(),
+        MediaPauseCommand(),
+        MediaPlayCommand(),
+        MediaPreviousCommand()
     )
 
     @JvmStatic
