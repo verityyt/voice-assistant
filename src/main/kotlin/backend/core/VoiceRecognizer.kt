@@ -11,7 +11,7 @@ import kotlin.system.exitProcess
 
 object VoiceRecognizer {
 
-    private val offers = listOf(
+    val offers = listOf(
         "wie kann ich ihnen helfen?",
         "kann ich irgendetwas für sie tun?",
         "kann ich ihnen irgendwie behilflich sein?",
