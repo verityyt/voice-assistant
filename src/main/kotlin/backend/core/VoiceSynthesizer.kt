@@ -58,4 +58,8 @@ object VoiceSynthesizer {
 
     }
 
+    fun speakLatest() {
+        speakText(latestOutput)
+    }
+
 }
