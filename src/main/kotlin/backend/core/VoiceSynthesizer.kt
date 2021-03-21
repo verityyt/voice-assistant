@@ -2,12 +2,17 @@ package backend.core
 
 import hud.HUD
 import org.openqa.selenium.By
-import sun.net.www.http.Hurryable
 import java.util.*
 
 object VoiceSynthesizer {
 
+    private var latestOutput = ""
+
     fun speakText(text: String) {
+
+        if(!VoiceRecognizer.offers.contains(text)) {
+            latestOutput = text
+        }
 
         VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[0])
 
