@@ -70,7 +70,8 @@ object VoiceAssistant {
         MediaNextCommand(),
         MediaPauseCommand(),
         MediaPlayCommand(),
-        MediaPreviousCommand()
+        MediaPreviousCommand(),
+        RepeatCommand()
     )
 
     @JvmStatic
