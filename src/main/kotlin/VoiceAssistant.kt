@@ -79,6 +79,17 @@ object VoiceAssistant {
 
         printIntro()
 
+        Logger.info("Checking os...", this.javaClass.name)
+
+        val os = System.getProperty("os.name")
+
+        if(os == "Windows 10") {
+            Logger.info("OS Check passed!",this.javaClass.name)
+        }else {
+            Logger.info("OS Check failed! Only 'Windows 10' is supported", this.javaClass.name)
+            exitProcess(-1)
+        }
+
         Logger.info("Starting up voice assistant...", this.javaClass.name)
 
         Configuration.create()
