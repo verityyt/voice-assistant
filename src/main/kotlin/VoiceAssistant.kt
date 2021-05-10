@@ -113,9 +113,9 @@ object VoiceAssistant {
         Thread.sleep(2000)
 
         if (this.voice == "female") {
-            driver.findElementByXPath("//div[text()='German - Claudia']").click()
+            driver.findElementByXPath("//div[text()='German - Claudia ']").click()
         } else {
-            driver.findElementByXPath("//div[text()='German - Klaus']").click()
+            driver.findElementByXPath("//div[text()='German - Klaus ']").click()
 
             val speed = driver.findElementByClassName("btn-speed")
             speed.click()
