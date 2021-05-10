@@ -17,6 +17,8 @@ object YoutubeFetcher {
 
         Thread.sleep(500)
 
+        VoiceAssistant.driver.findElementByXPath("//button[@aria-label='In die Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken einwilligen']").click()
+
         val renderers = VoiceAssistant.driver.findElementsByClassName("ytd-item-section-renderer")
         var content: WebElement? = null
 
