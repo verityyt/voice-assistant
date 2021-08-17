@@ -1,39 +1,31 @@
 package backend.utils
 
+import org.json.simple.JSONArray
+import org.json.simple.JSONObject
+import org.json.simple.parser.JSONParser
 import org.jsoup.Jsoup
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
+import java.awt.Desktop
+import java.net.URI
 import java.util.ArrayList
 
 object YoutubeFetcher {
 
     fun getTop(query: String): String {
-        val converted = query.replace(" ", "+")
+        val header = mapOf("Accept" to "application/json")
+        val url =
+            "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&eventType=none&maxResults=25&order=searchSortUnspecified&q=$query&key=${VoiceAssistant.youtubeApiKey}"
+        val req = khttp.get(url, header)
 
-        VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[0])
-        VoiceAssistant.driver.executeScript("window.open('','_blank');")
-        VoiceAssistant.driver.switchTo().window(ArrayList(VoiceAssistant.driver.windowHandles)[1])
-        VoiceAssistant.driver.get("https://www.youtube.com/results?search_query=$converted")
+        val json = JSONParser().parse(req.text) as JSONObject
+        val items = json["items"] as JSONArray
 
-        Thread.sleep(500)
+        val first = items[0] as JSONObject
+        val firstId = first["id"] as JSONObject
+        val firstVideoID = firstId["videoId"]
 
-        VoiceAssistant.driver.findElementByXPath("//button[@aria-label='In die Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken einwilligen']").click()
-
-        val renderers = VoiceAssistant.driver.findElementsByClassName("ytd-item-section-renderer")
-        var content: WebElement? = null
-
-        for(renderer in renderers) {
-            if(renderer.getAttribute("id") == "contents") {
-                content = renderer
-            }
-        }
-
-        val topResult = content!!.findElements(By.tagName("ytd-video-renderer")).first()
-        val href = topResult.findElement(By.id("video-title")).getAttribute("href")
-
-        VoiceAssistant.driver.close()
-
-        return href
+        return "https://www.youtube.com/watch?v=$firstVideoID"
     }
 
 }

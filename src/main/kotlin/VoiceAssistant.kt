@@ -39,6 +39,7 @@ object VoiceAssistant {
     var voice = ""
     var alias = ""
     var username = ""
+    var youtubeApiKey = ""
 
     var locked = false
 

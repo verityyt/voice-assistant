@@ -28,6 +28,7 @@ object Configuration {
             json["voice"] = "male"
             json["alias"] = "Just A Rather Very Intelligent System"
             json["username"] = "user"
+            json["youtube-api-key"] = ""
 
             file.writeText(json.toJSONString())
 
@@ -85,6 +86,7 @@ object Configuration {
             VoiceAssistant.alias = json["alias"].toString()
             VoiceAssistant.username = json["username"].toString()
             VoiceAssistant.coronaUrl = json["corona-in-zahlen.de"].toString()
+            VoiceAssistant.youtubeApiKey = json["youtube-api-key"].toString()
 
             setOptionsValue("filename", name)
 
