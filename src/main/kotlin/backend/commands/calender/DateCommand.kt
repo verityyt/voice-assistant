@@ -10,6 +10,7 @@ class DateCommand : VoiceCommand() {
     override val needsReaction: Boolean = false
 
     override val keywords: List<String> = listOf(
+        "welchen tag haben wir heute",
         "welcher tag ist heute",
         "welches datum haben wir",
         "welches datum ist es",
