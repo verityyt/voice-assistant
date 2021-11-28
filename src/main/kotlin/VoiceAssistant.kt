@@ -113,22 +113,17 @@ object VoiceAssistant {
 
         Thread.sleep(2000)
 
+        driver.findElementByXPath("//div[text()='Free']").click()
+
+        Thread.sleep(500)
+
         if (this.voice == "female") {
-            driver.findElementByXPath("//div[text()='German - Claudia ']").click()
+            driver.findElementByXPath("//div[text()=' German -  Katja  ']").click()
         } else {
-            driver.findElementByXPath("//div[text()='German - Klaus ']").click()
-
-            val speed = driver.findElementByClassName("btn-speed")
-            speed.click()
-
-            val items = driver.findElementsByClassName("speed-menu-item")
-
-            for (item in items) {
-                if (item.text == "0") {
-                    item.click()
-                }
-            }
+            driver.findElementByXPath("//div[text()=' German -  Stefan  ']").click()
         }
+
+        Thread.sleep(500)
 
         HUD.startup()
         HUD.hide()
